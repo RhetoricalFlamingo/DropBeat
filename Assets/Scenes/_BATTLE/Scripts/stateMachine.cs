@@ -15,13 +15,17 @@ public class stateMachine : MonoBehaviour {
 	int currentTurn = 0;
 	bool turnFinished = false;
 	string currentAction = "";
+	string currentMenu = "";
+	string previousMenu = "";
+
+	int target = 0;
 
 	public GameObject faceButtonUI;
 	public SpriteRenderer faceButtonRend;
 	public Sprite faceInit;
 	public Sprite faceTarget;
 
-	public class oneFriendlyDat
+	public class characterData
 	{
 		int maxHp;
 		int currentHp;
@@ -29,6 +33,13 @@ public class stateMachine : MonoBehaviour {
 
 		int fightDam;
 	}
+
+	characterData oneFriendData;
+	characterData twoFriendData;
+	characterData threeFriendData;
+	characterData oneEnemyData;
+	characterData twoEnemyData;
+	characterData threeEnemyData;
 
 	// Use this for initialization
 	void Start () {
@@ -42,65 +53,77 @@ public class stateMachine : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (currentTurn == 1) {		//add "&& oneFriendlyDat.isAlive
+		
+		if (currentTurn == 1) {		//add "&& oneFriendlyDat.isAlive, and make this a FOR statment
 			transform.position = oneFriendlyPosition;
 
-			if (currentAction == "") {
+///////////////////////////////////////////////////////////////////////////////////
+//////////TOP MENU/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+			if (currentMenu == "") {
 				//faceButtonRend = faceInit;
 
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
 					currentAction = "fight";
+					currentMenu = "target";
 				}	else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
-					currentAction = "dance";
+					currentMenu = "dance";
 				}	else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
-					currentAction = "item";
+					currentMenu = "item";
 				}	else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
 					currentAction = "run";
 				}
 			}
 
-			if (currentAction == "fight") {
-				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
-					//oneEnemyDat.currentHP -= oneFriendlyDat.fightDam;
-					turnFinished = true;
-				} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
-					//twoEnemyDat.currentHP -= oneFriendlyDat.fightDam;
-					turnFinished = true;
-				} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
-					//threeEnemyDat.currentHP -= oneFriendlyDat.fightDam;
-					turnFinished = true;
-				} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
-					currentAction = "";
-				}
-			}
+			if (currentMenu == "dance") {
+				previousMenu = "dance";
 
-			if (currentAction == "dance") {
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
-					//oneEnemyDat.currentHP -= oneFriendlyDat.fightDam;
-					turnFinished = true;
+					currentAction = "dance1";
+					currentMenu = "target";
 				} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
-					//twoEnemyDat.currentHP -= oneFriendlyDat.fightDam;
-					turnFinished = true;
+					currentAction = "dance2";
+					currentMenu = "target";
 				} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
-					//threeEnemyDat.currentHP -= oneFriendlyDat.fightDam;
-					turnFinished = true;
+					currentAction = "dance3";
+					currentMenu = "target";
 				} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
-					currentAction = "";
+					currentMenu = "";	//return to previous menu
 				}
 			}
 
 			if (currentAction == "item") {
+				previousMenu = "item";
+
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
-					//oneEnemyDat.currentHP -= oneFriendlyDat.fightDam;
+					currentAction = "item1";
+					currentMenu = "target";
+				} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
+					currentAction = "item2";
+					currentMenu = "target";
+				} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
+					currentAction = "item3";
+					currentMenu = "target";
+				} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
+					currentAction = "";
+				}
+			}
+//////////////////////////////////////////////////////////////////////////////////////
+/// ///////////TARGETING MENU///////////////////////////////////////////////////////////////////////////
+/// //////////////////////////////////////////////////////////////////////////////////////
+			if (currentMenu == "target") {
+				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
+					target = 1;
 					turnFinished = true;
 				} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
-					//twoEnemyDat.currentHP -= oneFriendlyDat.fightDam;
+					target = 2;
 					turnFinished = true;
 				} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
-					//threeEnemyDat.currentHP -= oneFriendlyDat.fightDam;
+					target = 3;
 					turnFinished = true;
 				} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
 					currentAction = "";
+					currentMenu = previousMenu;
 				}
 			}
 

@@ -18,6 +18,8 @@ public class stateMachine : MonoBehaviour {
 	string currentMenu = "";
 	string previousMenu = "";
 
+	int decisionAI = 0;
+
 	int target = 0;
 
 	public GameObject faceButtonUI;
@@ -25,57 +27,62 @@ public class stateMachine : MonoBehaviour {
 	public Sprite faceInit;
 	public Sprite faceTarget;
 
-	public class characterData
+	public class CharacterData
 	{
-		int maxHp;
-		int currentHp;
-		bool isAlive;
+		public int maxHp;
+		public int currentHp;
+		public bool isAlive;
 
-		int fightDam;
+		public string dance1;
+		public string dance2;
+		public string dance3;
+
+		public string item1;
+		public string item2;
+		public string item3;
+
+		public int fightDam;
+
 	}
 
-	characterData oneFriendData;
-	characterData twoFriendData;
-	characterData threeFriendData;
-	characterData oneEnemyData;
-	characterData twoEnemyData;
-	characterData threeEnemyData;
+	CharacterData[] charDatas = new CharacterData[6];
 
-	// Use this for initialization
 	void Start () {
 		transform.position = oneFriendlyPosition;
 		currentTurn = 1;
 
-		faceButtonRend = faceButtonUI.GetComponent<SpriteRenderer> ();
+		//faceButtonRend = faceButtonUI.GetComponent<SpriteRenderer> ();
 
 		//Finish character class declaration and initialisation
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		
-		if (currentTurn == 1) {		//add "&& oneFriendlyDat.isAlive, and make this a FOR statment
+///////////////////////////////////////////////////////////////////////////////////
+//********HUMAN PLAYER INPUT********///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////	
+		if (currentTurn < 4) {		//add "&& oneFriendlyDat.isAlive, and make this a FOR statment
 			transform.position = oneFriendlyPosition;
 
 ///////////////////////////////////////////////////////////////////////////////////
-//////////TOP MENU/////////////////////////////////////////////////////////////////////////
+//**************TOP MENU/////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
-			if (currentMenu == "") {
-				//faceButtonRend = faceInit;
+			if (currentMenu == "") {		//Fight goes directly to targeting menu
+				//faceButtonRend.sprite = faceInit;
 
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
 					currentAction = "fight";
 					currentMenu = "target";
-				}	else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
+				} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
 					currentMenu = "dance";
-				}	else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
+				} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
 					currentMenu = "item";
-				}	else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
-					currentAction = "run";
+				} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
+					currentMenu = "run";
 				}
 			}
 
 			if (currentMenu == "dance") {
+				//faceButtonRend.sprite = faceDance1?
 				previousMenu = "dance";
 
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
@@ -92,7 +99,8 @@ public class stateMachine : MonoBehaviour {
 				}
 			}
 
-			if (currentAction == "item") {
+			if (currentMenu == "item") {
+				//faceButtonRend.sprite = faceitem1?
 				previousMenu = "item";
 
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
@@ -109,7 +117,7 @@ public class stateMachine : MonoBehaviour {
 				}
 			}
 //////////////////////////////////////////////////////////////////////////////////////
-/// ///////////TARGETING MENU///////////////////////////////////////////////////////////////////////////
+//***********TARGETING MENU///////////////////////////////////////////////////////////////////////////
 /// //////////////////////////////////////////////////////////////////////////////////////
 			if (currentMenu == "target") {
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
@@ -127,19 +135,277 @@ public class stateMachine : MonoBehaviour {
 				}
 			}
 
-			if (currentAction == "run") {
+			if (currentMenu == "run") {
 				Debug.Log ("There's no escaping!");
-				currentAction = "";
+				currentMenu = "";
 			}
 		}
 
-		if (turnFinished) {
-			turnFinished = false;
-			currentTurn++;
-		}
+///////////////////////////////////////////////////////////////////////////////////
+//********AI AutoINPUT********///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////	
+		if (currentTurn >= 4) {
+			for (int i = 4; i < 7; i++) {
 
-		if (currentTurn >= 7) {
-			currentTurn = 1;
+				decisionAI = (int)Random.Range(0, 3);
+
+//**************Fight
+				if (decisionAI == 0) {
+					charDatas[(int)Random.Range (0, 2)].currentHp -= charDatas [i].fightDam;
+				}
+				if (decisionAI == 1) {
+					
+				}
+
+
+
+				currentTurn++;
+			}
+		}
+	
+//////////////////////////////////////////////////////////////////////////////////////////
+		//POTENTIAL ACTIONS READER
+		if (turnFinished) {
+
+///////////////////////////////////////////////////////////////FIGHT
+			if (currentAction == "fight") {
+				if (target == 1) {
+					//deal fight damage to target 1
+				}
+				if (target == 2) {
+					//deal fight damage to target 2
+				}
+				if (target == 3) {
+					//deal fight damage to target 3
+				}
+			}
+///////////////////////////////////////////////////////////////DANCE
+			if (currentTurn == 1) {			//PC1
+				if (currentAction == "dance1") {
+					if (target == 1) {
+						//PC 1's dance 1 on target 1
+					}
+					if (target == 2) {
+						//PC 1's dance 1 on target 2
+					}
+					if (target == 3) {
+						//PC 1's dance 1 on target 3
+					}
+				}
+				if (currentAction == "dance2") {
+					if (target == 1) {
+						//PC 1's dance 2 on target 1
+					}
+					if (target == 2) {
+						//PC 1's dance 2 on target 2
+					}
+					if (target == 3) {
+						//PC 1's dance 2 on target 3
+					}
+				}
+				if (currentAction == "dance3") {
+					if (target == 1) {
+						//PC 1's dance 3 on target 1
+					}
+					if (target == 2) {
+						//PC 1's dance 3 on target 2
+					}
+					if (target == 3) {
+						//PC 1's dance 3 on target 3
+					}
+				}
+			}
+///////////////////////////////////////////////////////////////
+			if (currentTurn == 2) {			//PC2
+				if (currentAction == "dance1") {
+					if (target == 1) {
+						//PC 2's dance 1 on target 1
+					}
+					if (target == 2) {
+						//PC 2's dance 1 on target 2
+					}
+					if (target == 3) {
+						//PC 2's dance 1 on target 3
+					}
+				}
+				if (currentAction == "dance2") {
+					if (target == 1) {
+						//PC 2's dance 2 on target 1
+					}
+					if (target == 2) {
+						//PC 2's dance 2 on target 2
+					}
+					if (target == 3) {
+						//PC 2's dance 2 on target 3
+					}
+				}
+				if (currentAction == "dance3") {
+					if (target == 1) {
+						//PC 2's dance 3 on target 1
+					}
+					if (target == 2) {
+						//PC 2's dance 3 on target 2
+					}
+					if (target == 3) {
+						//PC 2's dance 3 on target 3
+					}
+				}
+			}
+///////////////////////////////////////////////////////////////
+			if (currentTurn == 3) {			//PC23
+				if (currentAction == "dance1") {
+					if (target == 1) {
+						//PC 3's dance 1 on target 1
+					}
+					if (target == 2) {
+						//PC 3's dance 1 on target 2
+					}
+					if (target == 3) {
+						//PC 3's dance 1 on target 3
+					}
+				}
+				if (currentAction == "dance2") {
+					if (target == 1) {
+						//PC 3's dance 2 on target 1
+					}
+					if (target == 2) {
+						//PC 3's dance 2 on target 2
+					}
+					if (target == 3) {
+						//PC 3's dance 2 on target 3
+					}
+				}
+				if (currentAction == "dance3") {
+					if (target == 1) {
+						//PC 3's dance 3 on target 1
+					}
+					if (target == 2) {
+						//PC 3's dance 3 on target 2
+					}
+					if (target == 3) {
+						//PC 3's dance 3 on target 3
+					}
+				}
+			}
+
+///////////////////////////////////////////////////////////////ITEM
+			if (currentTurn == 1) {			//PC1
+				if (currentAction == "item1") {
+					if (target == 1) {
+						//PC 1's item 1 on target 1
+					}
+					if (target == 2) {
+						//PC 1's item 1 on target 2
+					}
+					if (target == 3) {
+						//PC 1's item 1 on target 3
+					}
+				}
+				if (currentAction == "item2") {
+					if (target == 1) {
+						//PC 1's item 2 on target 1
+					}
+					if (target == 2) {
+						//PC 1's item 2 on target 2
+					}
+					if (target == 3) {
+						//PC 1's item 2 on target 3
+					}
+				}
+				if (currentAction == "item3") {
+					if (target == 1) {
+						//PC 1's item 3 on target 1
+					}
+					if (target == 2) {
+						//PC 1's item 3 on target 2
+					}
+					if (target == 3) {
+						//PC 1's item 3 on target 3
+					}
+				}
+			}
+///////////////////////////////////////////////////////////////
+			if (currentTurn == 2) {			//PC2
+				if (currentAction == "item1") {
+					if (target == 1) {
+						//PC 2's item 1 on target 1
+					}
+					if (target == 2) {
+						//PC 2's item 1 on target 2
+					}
+					if (target == 3) {
+						//PC 2's item 1 on target 3
+					}
+				}
+				if (currentAction == "item2") {
+					if (target == 1) {
+						//PC 2's item 2 on target 1
+					}
+					if (target == 2) {
+						//PC 2's item 2 on target 2
+					}
+					if (target == 3) {
+						//PC 2's item 2 on target 3
+					}
+				}
+				if (currentAction == "item3") {
+					if (target == 1) {
+						//PC 2's item 3 on target 1
+					}
+					if (target == 2) {
+						//PC 2's item 3 on target 2
+					}
+					if (target == 3) {
+						//PC 2's item 3 on target 3
+					}
+				}
+			}
+///////////////////////////////////////////////////////////////
+			if (currentTurn == 3) {			//PC23
+				if (currentAction == "item1") {
+					if (target == 1) {
+						//PC 3's item 1 on target 1
+					}
+					if (target == 2) {
+						//PC 3's item 1 on target 2
+					}
+					if (target == 3) {
+						//PC 3's item 1 on target 3
+					}
+				}
+				if (currentAction == "item2") {
+					if (target == 1) {
+						//PC 3's item 2 on target 1
+					}
+					if (target == 2) {
+						//PC 3's item 2 on target 2
+					}
+					if (target == 3) {
+						//PC 3's item 2 on target 3
+					}
+				}
+				if (currentAction == "item3") {
+					if (target == 1) {
+						//PC 3's item 3 on target 1
+					}
+					if (target == 2) {
+						//PC 3's item 3 on target 2
+					}
+					if (target == 3) {
+						//PC 3's item 3 on target 3
+					}
+				}
+			}
+			
+
+			currentTurn++;
+			turnFinished = false;
+			currentMenu = "";
+			currentAction = "";
+
+			if (currentTurn > 6) {
+				currentTurn = 1;
+			}
 		}
 	}
 }

@@ -26,6 +26,8 @@ public class stateMachine : MonoBehaviour {
 	public SpriteRenderer faceButtonRend;
 	public Sprite faceInit;
 	public Sprite faceTarget;
+	public Sprite faceDance;
+	public Sprite faceItem;
 
 	public class CharacterData
 	{
@@ -51,7 +53,7 @@ public class stateMachine : MonoBehaviour {
 		transform.position = oneFriendlyPosition;
 		currentTurn = 1;
 
-		//faceButtonRend = faceButtonUI.GetComponent<SpriteRenderer> ();
+		faceButtonRend = faceButtonUI.GetComponent<SpriteRenderer> ();
 
 		//Finish character class declaration and initialisation
 	}
@@ -67,7 +69,7 @@ public class stateMachine : MonoBehaviour {
 //**************TOP MENU/////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 			if (currentMenu == "") {		//Fight goes directly to targeting menu
-				//faceButtonRend.sprite = faceInit;
+				faceButtonRend.sprite = faceInit;
 
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
 					currentAction = "fight";
@@ -82,7 +84,7 @@ public class stateMachine : MonoBehaviour {
 			}
 
 			if (currentMenu == "dance") {
-				//faceButtonRend.sprite = faceDance1?
+				faceButtonRend.sprite = faceDance;
 				previousMenu = "dance";
 
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
@@ -100,7 +102,7 @@ public class stateMachine : MonoBehaviour {
 			}
 
 			if (currentMenu == "item") {
-				//faceButtonRend.sprite = faceitem1?
+				faceButtonRend.sprite = faceItem;
 				previousMenu = "item";
 
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
@@ -120,6 +122,8 @@ public class stateMachine : MonoBehaviour {
 //***********TARGETING MENU///////////////////////////////////////////////////////////////////////////
 /// //////////////////////////////////////////////////////////////////////////////////////
 			if (currentMenu == "target") {
+				faceButtonRend.sprite = faceTarget;
+
 				if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
 					target = 1;
 					turnFinished = true;

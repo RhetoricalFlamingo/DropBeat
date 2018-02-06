@@ -1457,7 +1457,7 @@ Transform:
   m_LocalScale: {x: 0.37013876, y: 0.29869172, z: 1}
   m_Children: []
   m_Father: {fileID: 2037369892}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!114 &1104275902
 MonoBehaviour:
@@ -1478,10 +1478,12 @@ MonoBehaviour:
   threeEnemyPosition: {x: 67.5, y: 0.7, z: -6.38}
   currentAction: 
   currentMenu: 
-  faceButtonUI: {fileID: 0}
+  faceButtonUI: {fileID: 1760734056}
   faceButtonRend: {fileID: 0}
-  faceInit: {fileID: 0}
-  faceTarget: {fileID: 0}
+  faceInit: {fileID: 21300000, guid: 7ce5230a29362e846918438ef1dc609b, type: 3}
+  faceTarget: {fileID: 21300000, guid: d5258a0cc4696c34d828a19e76c16a12, type: 3}
+  faceDance: {fileID: 21300000, guid: 6ba9d5e1d7b4e33449b98a7f9d7863c0, type: 3}
+  faceItem: {fileID: 21300000, guid: a789fed6a37ae51449215c0b04e5b223, type: 3}
 --- !u!1 &1116134361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,12 +2363,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1760734056}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.744, y: 7.175, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.7272758, y: 11.441994, z: -2.625}
   m_LocalScale: {x: 0.5022473, y: 0.5032714, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 2037369892}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1771885963
 GameObject:
@@ -2783,6 +2785,7 @@ Transform:
   - {fileID: 876092776}
   - {fileID: 1545927248}
   - {fileID: 932332043}
+  - {fileID: 1760734058}
   - {fileID: 1104275901}
   m_Father: {fileID: 0}
   m_RootOrder: 1

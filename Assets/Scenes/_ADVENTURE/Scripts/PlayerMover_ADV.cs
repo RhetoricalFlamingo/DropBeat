@@ -63,8 +63,5 @@ public class PlayerMover_ADV : MonoBehaviour {
 		}
 	
 		transform.rotation = new Quaternion (0f, 0f, 0f, 0f);
-
-		Debug.Log ("X: " + Input.GetAxis ("rJoystickX"));
-		Debug.Log ("Y: " + Input.GetAxis ("rJoystickY"));
 	}
 }

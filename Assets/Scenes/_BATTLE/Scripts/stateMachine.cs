@@ -14,8 +14,8 @@ public class stateMachine : MonoBehaviour {
 
 	int currentTurn = 0;
 	bool turnFinished = false;
-	string currentAction = "";
-	string currentMenu = "";
+	public string currentAction = "";
+	public string currentMenu = "";
 	string previousMenu = "";
 
 	int decisionAI = 0;

@@ -12,7 +12,7 @@ public class stateMachine : MonoBehaviour {
 	public Vector3 twoEnemyPosition = new Vector3 (0, 0, 0);
 	public Vector3 threeEnemyPosition = new Vector3 (0, 0, 0);
 
-	int currentTurn = 0;
+	public int currentTurn = 0;
 	bool turnFinished = false;
 	public string currentAction = "";
 	public string currentMenu = "";
@@ -59,11 +59,29 @@ public class stateMachine : MonoBehaviour {
 	}
 
 	void Update () {
+		if (currentTurn == 1) {
+			transform.position = oneFriendlyPosition;
+		}
+		if (currentTurn == 2) {
+			transform.position = twoFriendlyPosition;
+			Debug.Log ("2");
+		}
+		if (currentTurn == 3) {
+			transform.position = threeFriendlyPosition;
+		}
+		if (currentTurn == 4) {
+			transform.position = oneEnemyPosition;
+		}
+		if (currentTurn == 5) {
+			transform.position = twoEnemyPosition;
+		}
+		if (currentTurn == 6) {
+			transform.position = threeEnemyPosition;
+		}
 ///////////////////////////////////////////////////////////////////////////////////
 //********HUMAN PLAYER INPUT********///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////	
 		if (currentTurn < 4) {		//add "&& oneFriendlyDat.isAlive, and make this a FOR statment
-			transform.position = oneFriendlyPosition;
 
 ///////////////////////////////////////////////////////////////////////////////////
 //**************TOP MENU/////////////////////////////////////////////////////////////////////////

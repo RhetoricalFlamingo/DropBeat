@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTime: 0
-  beatTime: 0.5
+  beatTime: 0.3579
   bufferPeriod: 0.112
   onBeat: 0
   beatSpriteRenderer: {fileID: 0}
@@ -1476,6 +1476,7 @@ MonoBehaviour:
   oneEnemyPosition: {x: 59.1, y: -6.4, z: -6.38}
   twoEnemyPosition: {x: 63.6, y: -3.6, z: -6.38}
   threeEnemyPosition: {x: 67.5, y: 0.7, z: -6.38}
+  currentTurn: 0
   currentAction: 
   currentMenu: 
   faceButtonUI: {fileID: 1760734056}

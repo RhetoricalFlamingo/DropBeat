@@ -95,6 +95,34 @@ public class stateMachine : MonoBehaviour {
 		//charDatas [0].item3 = _empty_
 		charDatas [2].fightDam = 12;
 		charDatas [2].charged = false;
+//-BADDIE_1
+		charDatas [3].maxHp = 120;
+		charDatas [3].currentHp = charDatas [0].maxHp;
+		charDatas [3].isAlive = true;
+		//charDatas [0].dance1 = Blast (AOE)
+		//charDatas [0].dance2 = Legion (Heal)
+		//charDatas [0].dance3 = Charge
+		charDatas [3].fightDam = 12;
+		charDatas [3].charged = false;
+//-BADDIE_2
+		charDatas [3].maxHp = 120;
+		charDatas [3].currentHp = charDatas [0].maxHp;
+		charDatas [3].isAlive = true;
+		//charDatas [0].dance1 = Blast (AOE)
+		//charDatas [0].dance2 = Legion (Heal)
+		//charDatas [0].dance3 = Charge
+		charDatas [3].fightDam = 12;
+		charDatas [3].charged = false;
+//-BADDIE_3
+		charDatas [3].maxHp = 120;
+		charDatas [3].currentHp = charDatas [0].maxHp;
+		charDatas [3].isAlive = true;
+		//charDatas [0].dance1 = Blast (AOE)
+		//charDatas [0].dance2 = Legion (Heal)
+		//charDatas [0].dance3 = Charge
+		charDatas [3].fightDam = 12;
+		charDatas [3].charged = false;
+
 	}
 
 	void Update () {

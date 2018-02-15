@@ -1332,7 +1332,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1100282349}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -1609,7 +1609,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1185527564}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.69988656, g: 0.18555363, b: 0.9705882, a: 0}
@@ -2838,6 +2838,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inBattle: 0
   ATran: {fileID: 1489553597}
+  adventureCam: {x: 0, y: 0, z: -10}
+  battleCam: {x: 48.5, y: -1, z: -10}
+  cam: {fileID: 1100282349}
 --- !u!4 &2129023827
 Transform:
   m_ObjectHideFlags: 0

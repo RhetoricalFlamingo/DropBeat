@@ -106,25 +106,7 @@ public class stateMachine : MonoBehaviour {
 							currentMenu = "";	//return to previous menu
 						}
 					}
-
-					if (currentMenu == "item") {
-						faceButtonRend.sprite = faceItem;
-						previousMenu = "item";
-
-						if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
-							currentAction = "item1";
-							currentMenu = "target";
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
-							currentAction = "item2";
-							currentMenu = "target";
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
-							currentAction = "item3";
-							currentMenu = "target";
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
-							currentAction = "";
-							currentMenu = "";
-						}
-					}
+						
 
 					if (currentMenu == "") {		//Fight goes directly to targeting menu
 						faceButtonRend.sprite = faceInit;
@@ -134,8 +116,6 @@ public class stateMachine : MonoBehaviour {
 							currentMenu = "target";
 						} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
 							currentMenu = "dance";
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
-							currentMenu = "item";
 						} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
 							currentMenu = "run";
 						}

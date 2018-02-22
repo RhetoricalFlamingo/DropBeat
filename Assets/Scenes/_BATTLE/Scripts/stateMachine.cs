@@ -341,6 +341,9 @@ public class stateMachine : MonoBehaviour {
 				if (decisionAI > 40 && decisionAI <= 60 && charDatas [i].currentHp <= (int)(charDatas [i].maxHp * .3f)) {	 //If BLAST would kill the AI, it uses FIGHT instead
 					decisionAI = 0;
 				}
+				if (!charDatas [i].isAlive) {
+					decisionAI = 100;
+				}
 
 				//**************Fight
 				if (decisionAI <= 40) {
@@ -361,6 +364,7 @@ public class stateMachine : MonoBehaviour {
 							charDatas [(int)Random.Range (0, 2)].currentHp -= charDatas [i].fightDam;
 						}
 					}
+					Debug.Log ("Enemy " + (i-2) + " Used FIGHT");
 				}
 				//**************Blast
 				else if (decisionAI > 40 && decisionAI <= 60) {
@@ -368,14 +372,24 @@ public class stateMachine : MonoBehaviour {
 					charDatas [1].currentHp -= (int)(charDatas [i].fightDam * .4f);
 					charDatas [2].currentHp -= (int)(charDatas [i].fightDam * .4f);
 					charDatas [i].currentHp -= (int)(charDatas [i].maxHp * .3f);
+
+					Debug.Log ("Enemy " + (i-2) + " Used BLAST");
 				}
 				//**************Legion
 				else if (decisionAI > 60 && decisionAI <= 70) {
 					charDatas [(int)Random.Range (3, 5)].currentHp += 20;
+
+					Debug.Log ("Enemy " + (i-2) + " Used LEGION");
 				}
 				//**************Charge
 				else if (decisionAI > 70) {
 					charDatas [i].charged = true;
+
+					Debug.Log ("Enemy " + (i-2) + " Used CHARGE");
+				} 
+				//**************DEAD
+				else if (decisionAI == 100) {
+					//isDead
 				}
 
 

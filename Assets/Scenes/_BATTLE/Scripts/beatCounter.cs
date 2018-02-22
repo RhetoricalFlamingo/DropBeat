@@ -12,6 +12,9 @@ public class beatCounter : MonoBehaviour {
 
 	public SpriteRenderer beatSpriteRenderer;
 
+	public GameObject ABTran;
+	public bool inBattle;
+
 	// Use this for initialization
 	void Start () {
 		beatSpriteRenderer = GetComponent<SpriteRenderer> ();
@@ -19,20 +22,25 @@ public class beatCounter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		currentTime += Time.deltaTime;
+		inBattle = ABTran.GetComponent<ABTransition> ().inBattle;
 
-		if (currentTime >= (beatTime - bufferPeriod) && currentTime <= (beatTime + bufferPeriod)) {
-			onBeat = true;
-		} else
-			onBeat = false;
+		if (inBattle) {
 
-		if (currentTime > (beatTime + bufferPeriod)) {
-			currentTime = 0;
-		}
+			currentTime += Time.deltaTime;
 
-		if (onBeat) {
-			beatSpriteRenderer.enabled = true;
-		} else
-			beatSpriteRenderer.enabled = false;
-	}	
+			if (currentTime >= (beatTime - bufferPeriod) && currentTime <= (beatTime + bufferPeriod)) {
+				onBeat = true;
+			} else
+				onBeat = false;
+
+			if (currentTime > (beatTime + bufferPeriod)) {
+				currentTime = 0;
+			}
+
+			if (onBeat) {
+				beatSpriteRenderer.enabled = true;
+			} else
+				beatSpriteRenderer.enabled = false;
+		}	
+	}
 }

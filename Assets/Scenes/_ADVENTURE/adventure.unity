@@ -1049,7 +1049,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3447abba855466049b59d06825768ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeedSet: 4.5
   moveSpeed: 0.05
   ABTran: {fileID: 2129023825}
 --- !u!50 &864681929
@@ -1230,6 +1229,8 @@ MonoBehaviour:
   bufferPeriod: 0.112
   onBeat: 0
   beatSpriteRenderer: {fileID: 0}
+  ABTran: {fileID: 2129023825}
+  inBattle: 0
 --- !u!212 &932332042
 SpriteRenderer:
   m_ObjectHideFlags: 0

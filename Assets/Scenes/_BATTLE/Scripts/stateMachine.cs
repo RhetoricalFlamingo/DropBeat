@@ -209,6 +209,7 @@ public class stateMachine : MonoBehaviour {
 			}
 
 			healthMonitor ();
+			endGame ();
 		}
 	}
 
@@ -376,6 +377,15 @@ public class stateMachine : MonoBehaviour {
 
 				currentTurn++;
 			}
+		}
+	}
+
+	public void endGame ()	{
+		if (charDatas [0].currentHp <= 0 && charDatas [1].currentHp <= 0 && charDatas [2].currentHp <= 0) {
+			Debug.Log ("No One is Able To Fight! YOU LOSE!");
+		}
+		if (charDatas [3].currentHp <= 0 && charDatas [4].currentHp <= 0 && charDatas [5].currentHp <= 0) {
+			Debug.Log ("All Enemies Are Down! YOU WIN!");
 		}
 	}
 }

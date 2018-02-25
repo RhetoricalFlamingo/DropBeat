@@ -15,22 +15,22 @@ public class barsHP : MonoBehaviour {
 	void Start () {
 		HP = this.GetComponent<Text> ();
 
-		if (transform.position.x == -43) {	//Must be updated to match current text objects' positions
+		if (HP.GetInstanceID() == 9912) {	//Must be updated to match current text objects' positions
 			i = 1;
 		}
-		if (transform.localPosition.x == -96.78001) {
+		if (HP.GetInstanceID() == 9858) {
 			i = 2;
 		}
-		if (transform.localPosition.x == -118.78) {
+		if (HP.GetInstanceID() == 10076) {
 			i = 3;
 		}
-		if (transform.localPosition.x == 48.2) {
+		if (HP.GetInstanceID() == 9850) {
 			i = 4;
 		}
-		if (transform.localPosition.x == 80.1) {
+		if (HP.GetInstanceID() == 9870) {
 			i = 5;
 		}
-		if (transform.localPosition.x == 124.3) {
+		if (HP.GetInstanceID() == 10094) {
 			i = 6;
 		}
 	}

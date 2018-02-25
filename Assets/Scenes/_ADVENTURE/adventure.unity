@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 52369749}
   - component: {fileID: 52369751}
   - component: {fileID: 52369750}
+  - component: {fileID: 52369752}
   m_Layer: 5
   m_Name: 3_HPcharDatas
   m_TagString: Untagged
@@ -182,6 +183,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 52369748}
+--- !u!114 &52369752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 52369748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb59b7bc6cc9534cbdc6b76960ad4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticuleStateMachine: {fileID: 1104275899}
+  HP: {fileID: 0}
 --- !u!1 &222712910
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +206,7 @@ GameObject:
   - component: {fileID: 222712911}
   - component: {fileID: 222712913}
   - component: {fileID: 222712912}
+  - component: {fileID: 222712914}
   m_Layer: 5
   m_Name: 1_HPcharDatas
   m_TagString: Untagged
@@ -256,6 +271,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 222712910}
+--- !u!114 &222712914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 222712910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb59b7bc6cc9534cbdc6b76960ad4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticuleStateMachine: {fileID: 1104275899}
+  HP: {fileID: 0}
 --- !u!1 &231604868
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +327,7 @@ GameObject:
   - component: {fileID: 302432337}
   - component: {fileID: 302432339}
   - component: {fileID: 302432338}
+  - component: {fileID: 302432340}
   m_Layer: 5
   m_Name: 4_HPcharDatas
   m_TagString: Untagged
@@ -363,6 +392,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 302432336}
+--- !u!114 &302432340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 302432336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb59b7bc6cc9534cbdc6b76960ad4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticuleStateMachine: {fileID: 1104275899}
+  HP: {fileID: 0}
 --- !u!1 &308501284
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +761,7 @@ GameObject:
   - component: {fileID: 702943735}
   - component: {fileID: 702943737}
   - component: {fileID: 702943736}
+  - component: {fileID: 702943738}
   m_Layer: 5
   m_Name: 0_HPcharDatas
   m_TagString: Untagged
@@ -783,6 +826,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 702943734}
+--- !u!114 &702943738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 702943734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb59b7bc6cc9534cbdc6b76960ad4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticuleStateMachine: {fileID: 1104275899}
+  HP: {fileID: 0}
 --- !u!1 &727079193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,6 +2411,7 @@ GameObject:
   - component: {fileID: 1565523868}
   - component: {fileID: 1565523870}
   - component: {fileID: 1565523869}
+  - component: {fileID: 1565523871}
   m_Layer: 5
   m_Name: 2_HPcharDatas
   m_TagString: Untagged
@@ -2419,6 +2476,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1565523867}
+--- !u!114 &1565523871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1565523867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb59b7bc6cc9534cbdc6b76960ad4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticuleStateMachine: {fileID: 1104275899}
+  HP: {fileID: 0}
 --- !u!1 &1573574008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,6 +2600,7 @@ GameObject:
   - component: {fileID: 1590804758}
   - component: {fileID: 1590804760}
   - component: {fileID: 1590804759}
+  - component: {fileID: 1590804761}
   m_Layer: 5
   m_Name: 5_HPcharDatas
   m_TagString: Untagged
@@ -2594,6 +2665,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1590804757}
+--- !u!114 &1590804761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1590804757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb59b7bc6cc9534cbdc6b76960ad4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticuleStateMachine: {fileID: 1104275899}
+  HP: {fileID: 0}
 --- !u!1 &1595412137
 GameObject:
   m_ObjectHideFlags: 0

@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
   HP: {fileID: 0}
+  inBattle: 0
 --- !u!1 &222712910
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
   HP: {fileID: 0}
+  inBattle: 0
 --- !u!1 &231604868
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
   HP: {fileID: 0}
+  inBattle: 0
 --- !u!1 &308501284
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
   HP: {fileID: 0}
+  inBattle: 0
 --- !u!1 &727079193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,6 +1587,9 @@ MonoBehaviour:
   beatSpriteRenderer: {fileID: 0}
   ABTran: {fileID: 2129023825}
   inBattle: 0
+  stateMachineObject: {fileID: 1104275899}
+  flawless: 1
+  turnUpdate: 0
 --- !u!212 &932332042
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1831,6 +1838,7 @@ MonoBehaviour:
   twoEnemyPosition: {x: 63.6, y: -3.6, z: -6.38}
   threeEnemyPosition: {x: 67.5, y: 0.7, z: -6.38}
   currentTurn: 0
+  turnUpdate: 0
   currentAction: 
   currentMenu: 
   faceButtonUI: {fileID: 1760734056}
@@ -2489,6 +2497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
   HP: {fileID: 0}
+  inBattle: 0
 --- !u!1 &1573574008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,6 +2687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
   HP: {fileID: 0}
+  inBattle: 0
 --- !u!1 &1595412137
 GameObject:
   m_ObjectHideFlags: 0

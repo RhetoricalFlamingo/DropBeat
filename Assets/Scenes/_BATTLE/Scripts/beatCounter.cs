@@ -15,14 +15,28 @@ public class beatCounter : MonoBehaviour {
 	public GameObject ABTran;
 	public bool inBattle;
 
+	public GameObject stateMachineObject;
 	public bool flawless = true;
+	public bool turnUpdate = false;
 
-	// Use this for initialization
 	void Start () {
 		beatSpriteRenderer = GetComponent<SpriteRenderer> ();
 	}
-	
-	// Update is called once per frame
+
+	void Update () {
+		if (Input.anyKeyDown && onBeat == false) {
+			flawless = false;
+		}
+
+		turnUpdate = stateMachineObject.GetComponent<stateMachine> ().turnUpdate;
+
+		if (turnUpdate == true) {
+			flawless = true;
+			turnUpdate = false;
+		}
+	}
+
+
 	void FixedUpdate () {
 		inBattle = ABTran.GetComponent<ABTransition> ().inBattle;
 

@@ -14,6 +14,7 @@ public class stateMachine : MonoBehaviour {
 
 	public int currentTurn = 0;
 	bool turnFinished = false;
+	public bool turnUpdate = false;
 	public string currentAction = "";
 	public string currentMenu = "";
 	string previousMenu = "";
@@ -60,7 +61,9 @@ public class stateMachine : MonoBehaviour {
 		inBattle = ABTran.GetComponent<ABTransition> ().inBattle;
 
 		if (inBattle) {
-			
+
+			turnUpdate = false;
+
 			reticulePosition ();
 ///////////////////////////////////////////////////////////////////////////////////
 //********HUMAN PLAYER INPUT********///////////////////////////////////////////////////////////
@@ -136,73 +139,8 @@ public class stateMachine : MonoBehaviour {
 				
 			combatAI ();
 	
-//////////////////////////////////////////////////////////////////////////////////////////
 			//POTENTIAL ACTIONS READER
-			if (turnFinished) {
-
-///////////////////////////////////////////////////////////////FIGHT
-				if (currentAction == "fight") {
-					charDatas [target + 2].currentHp -= charDatas [currentTurn].fightDam;
-					Debug.Log ("Fight: " + charDatas [target + 2].currentHp);
-				}
-///////////////////////////////////////////////////////////////DANCE
-				if (currentTurn == 1) {			//PC1
-					if (currentAction == "dance1") {	// X
-						for (int i = 3; i < 6; i++) {		//AOE
-							charDatas [i].currentHp -= 10;
-							Debug.Log ("AOE Dance: " + charDatas [i].currentHp);
-						}
-					}
-					if (currentAction == "dance2") {	// []
-						charDatas[target + 2].currentHp -= 30;		//Recoil Hit
-						charDatas [currentTurn - 1].currentHp -= 10;
-						Debug.Log ("RECOIL Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
-
-					}
-					if (currentAction == "dance3") {	// /\
-						Debug.Log ("Action Unwritten");		//TBD
-					}
-				}
-///////////////////////////////////////////////////////////////
-				if (currentTurn == 2) {			//PC2
-					if (currentAction == "dance1") {
-						for (int i = 0; i < 3; i++) {
-							charDatas [i].currentHp += 8;
-							Debug.Log ("TEAMHEAL Dance: " + charDatas [i].currentHp);
-						}
-					}
-					if (currentAction == "dance2") {
-						charDatas [target + 2].currentHp -= 8;
-						charDatas [currentTurn - 1].currentHp += 5;
-						Debug.Log ("VAMP Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
-					}
-					if (currentAction == "dance3") {
-						charDatas [target + 2].currentHp -= 15;
-						Debug.Log ("Placeholder HIT");
-					}
-				}
-///////////////////////////////////////////////////////////////
-				if (currentTurn == 3) {			//PC3
-					if (currentAction == "dance1") {
-						charDatas [currentTurn - 1].currentHp += 12;
-						Debug.Log ("SELFHEAL Dance: " + charDatas [currentTurn - 1].currentHp);
-					}
-					if (currentAction == "dance2") {
-						Debug.Log ("Action Unwritten");
-					}
-					if (currentAction == "dance3") {
-						stirThePot = true;
-						Debug.Log ("StirThePot");
-					}
-				}
-
-				//*****ITEMS HAVE BEEN REMOVED - TAKE 'EM OUT OF THE MENU HIERARCHY
-
-				currentTurn++;
-				turnFinished = false;
-				currentMenu = "";
-				currentAction = "";
-			}
+			turnFinishedFunc();
 
 			if (currentTurn > 6) {
 				currentTurn = 1;
@@ -386,6 +324,75 @@ public class stateMachine : MonoBehaviour {
 		}
 		if (charDatas [3].currentHp <= 0 && charDatas [4].currentHp <= 0 && charDatas [5].currentHp <= 0) {
 			Debug.Log ("All Enemies Are Down! YOU WIN!");
+		}
+	}
+
+	public void turnFinishedFunc ()	{
+		if (turnFinished) {
+
+			///////////////////////////////////////////////////////////////FIGHT
+			if (currentAction == "fight") {
+				charDatas [target + 2].currentHp -= charDatas [currentTurn].fightDam;
+				Debug.Log ("Fight: " + charDatas [target + 2].currentHp);
+			}
+			///////////////////////////////////////////////////////////////DANCE
+			if (currentTurn == 1) {			//PC1
+				if (currentAction == "dance1") {	// X
+					for (int i = 3; i < 6; i++) {		//AOE
+						charDatas [i].currentHp -= 10;
+						Debug.Log ("AOE Dance: " + charDatas [i].currentHp);
+					}
+				}
+				if (currentAction == "dance2") {	// []
+					charDatas [target + 2].currentHp -= 30;		//Recoil Hit
+					charDatas [currentTurn - 1].currentHp -= 10;
+					Debug.Log ("RECOIL Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
+
+				}
+				if (currentAction == "dance3") {	// /\
+					Debug.Log ("Action Unwritten");		//TBD
+				}
+			}
+			///////////////////////////////////////////////////////////////
+			if (currentTurn == 2) {			//PC2
+				if (currentAction == "dance1") {
+					for (int i = 0; i < 3; i++) {
+						charDatas [i].currentHp += 8;
+						Debug.Log ("TEAMHEAL Dance: " + charDatas [i].currentHp);
+					}
+				}
+				if (currentAction == "dance2") {
+					charDatas [target + 2].currentHp -= 8;
+					charDatas [currentTurn - 1].currentHp += 5;
+					Debug.Log ("VAMP Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
+				}
+				if (currentAction == "dance3") {
+					charDatas [target + 2].currentHp -= 15;
+					Debug.Log ("Placeholder HIT");
+				}
+			}
+			///////////////////////////////////////////////////////////////
+			if (currentTurn == 3) {			//PC3
+				if (currentAction == "dance1") {
+					charDatas [currentTurn - 1].currentHp += 12;
+					Debug.Log ("SELFHEAL Dance: " + charDatas [currentTurn - 1].currentHp);
+				}
+				if (currentAction == "dance2") {
+					Debug.Log ("Action Unwritten");
+				}
+				if (currentAction == "dance3") {
+					stirThePot = true;
+					Debug.Log ("StirThePot");
+				}
+			}
+
+			//*****ITEMS HAVE BEEN REMOVED - TAKE 'EM OUT OF THE MENU HIERARCHY
+
+			currentTurn++;
+			turnFinished = false;
+			currentMenu = "";
+			currentAction = "";
+			turnUpdate = true; //for rhythm mechanic
 		}
 	}
 }

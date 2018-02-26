@@ -9,6 +9,8 @@ public class barsHP : MonoBehaviour {
 
 	public Text HP;
 
+	public bool inBattle;
+
 	int i = 0;	//used to check text position to assign correct health levels
 
 	// Use this for initialization
@@ -37,6 +39,15 @@ public class barsHP : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//HP.text = reticuleStateMachine.GetComponent<stateMachine> ().charDatas [i].currentHP;
+		inBattle = reticuleStateMachine.GetComponent<stateMachine> ().inBattle;
+
+		if (!inBattle) {
+			HP.text = "";
+		}
+
+		if (inBattle) {
+			//HP.text = reticuleStateMachine.GetComponent<stateMachine> ().charDatas [i].currentHP + "/" +
+			//			reticuleStateMachine.GetComponent<stateMachine> ().charDatas [i].maxHP;
+		}
 	}
 }

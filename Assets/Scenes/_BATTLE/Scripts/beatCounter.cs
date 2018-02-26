@@ -15,6 +15,8 @@ public class beatCounter : MonoBehaviour {
 	public GameObject ABTran;
 	public bool inBattle;
 
+	public bool flawless = true;
+
 	// Use this for initialization
 	void Start () {
 		beatSpriteRenderer = GetComponent<SpriteRenderer> ();

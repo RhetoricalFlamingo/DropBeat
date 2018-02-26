@@ -370,12 +370,12 @@ public class stateMachine : MonoBehaviour {
 				} 
 				//**************DEAD
 				else if (decisionAI == 100) {
-					//isDead
+					Debug.Log ("Enemy " + (i - 2) + " Is DEAD");
 				}
 
 
 
-				currentTurn++;
+				turnFinished = true;
 			}
 		}
 	}

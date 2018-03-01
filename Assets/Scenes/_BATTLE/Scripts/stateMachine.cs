@@ -47,6 +47,7 @@ public class stateMachine : MonoBehaviour {
 	bool stirThePot = false;
 	bool upStage = false;
 	int upStageCount = 9;
+	bool miracleUsed = false;
 
 	public CharacterData[] charDatas = new CharacterData[6];
 
@@ -398,8 +399,16 @@ public class stateMachine : MonoBehaviour {
 					Debug.Log ("VAMP Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
 				}
 				if (currentAction == "dance3") {
-					charDatas [target + 2].currentHp -= 15;
-					Debug.Log ("Placeholder HIT");
+					if (miracleUsed) {
+						Debug.Log ("Miracle has already been used this battle!");
+					}
+					if (!miracleUsed) {
+						for (int i = 0; i < 3; i++) {
+							charDatas [i].currentHp += 20;
+							Debug.Log ("MIRACLE Dance: " + charDatas [i].currentHp);
+						}
+						miracleUsed = true;
+					}
 				}
 			}
 			///////////////////////////////////////////////////////////////

@@ -334,7 +334,8 @@ public class stateMachine : MonoBehaviour {
 
 
 
-				turnFinished = true;
+				//turnFinished = true;
+				currentTurn++;
 			}
 		}
 	}
@@ -416,8 +417,6 @@ public class stateMachine : MonoBehaviour {
 					Debug.Log ("StirThePot");
 				}
 			}
-
-			//*****ITEMS HAVE BEEN REMOVED - TAKE 'EM OUT OF THE MENU HIERARCHY
 
 			currentTurn++;
 			turnFinished = false;

@@ -19,23 +19,23 @@ public class barsHP : MonoBehaviour {
 
 
 
-		if (HP.GetInstanceID() == 9942) {
+		if (HP.GetInstanceID() == 9946) {
 			i = 0;
 			Debug.Log ("1");
 		}
-		if (HP.GetInstanceID() == 9884) {
+		if (HP.GetInstanceID() == 9888) {
 			i = 1;
 			Debug.Log ("2");
 		}
-		if (HP.GetInstanceID() == 10108) {
+		if (HP.GetInstanceID() == 10106) {
 			i = 2;
 			Debug.Log ("3");
 		}
-		if (HP.GetInstanceID() == 9874) {
+		if (HP.GetInstanceID() == 9878) {
 			i = 3;
 			Debug.Log ("4");
 		}
-		if (HP.GetInstanceID() == 9898) {
+		if (HP.GetInstanceID() == 9902) {
 			i = 4;
 			Debug.Log ("5");
 		}

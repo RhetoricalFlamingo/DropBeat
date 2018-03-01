@@ -27,8 +27,11 @@ public class stateMachine : MonoBehaviour {
 	public SpriteRenderer faceButtonRend;
 	public Sprite faceInit;
 	public Sprite faceTarget;
-	public Sprite faceDance;
-	public Sprite faceItem;
+	public Sprite faceDance1;
+	public Sprite faceDance2;
+	public Sprite faceDance3;
+
+	public GameObject youwinSprite;
 
 	[System.Serializable]
 	public class CharacterData
@@ -42,8 +45,10 @@ public class stateMachine : MonoBehaviour {
 	}
 
 	bool stirThePot = false;
+	bool upStage = false;
+	int upStageCount = 9;
 
-	CharacterData[] charDatas = new CharacterData[6];
+	public CharacterData[] charDatas = new CharacterData[6];
 
 	public bool inBattle = false;
 	public GameObject ABTran;
@@ -93,7 +98,16 @@ public class stateMachine : MonoBehaviour {
 					}
 				
 					if (currentMenu == "dance") {
-						faceButtonRend.sprite = faceDance;
+						if (currentTurn == 1) {
+							faceButtonRend.sprite = faceDance1;
+						}
+						if (currentTurn == 2) {
+							faceButtonRend.sprite = faceDance2;
+						}
+						if (currentTurn == 3) {
+							faceButtonRend.sprite = faceDance3;
+						}
+
 						previousMenu = "dance";
 
 						if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
@@ -263,7 +277,14 @@ public class stateMachine : MonoBehaviour {
 				if (!charDatas [i].isAlive) {
 					decisionAI = 100;
 				}
-
+				if (upStageCount == 0) {
+					upStage = false;
+				}
+				if (upStage) {
+					decisionAI = 100;
+					upStageCount--;
+					Debug.Log ("Upstaged!");
+				}
 				//**************Fight
 				if (decisionAI <= 40) {
 					if (charDatas [i].charged) {
@@ -323,6 +344,7 @@ public class stateMachine : MonoBehaviour {
 			Debug.Log ("No One is Able To Fight! YOU LOSE!");
 		}
 		if (charDatas [3].currentHp <= 0 && charDatas [4].currentHp <= 0 && charDatas [5].currentHp <= 0) {
+			youwinSprite.SetActive (true);
 			Debug.Log ("All Enemies Are Down! YOU WIN!");
 		}
 	}
@@ -350,7 +372,15 @@ public class stateMachine : MonoBehaviour {
 
 				}
 				if (currentAction == "dance3") {	// /\
-					Debug.Log ("Action Unwritten");		//TBD
+					if (!upStage && upStageCount != 0) {
+						upStage = true;
+						upStageCount = 3;
+						Debug.Log ("Upstage");		//Skip all enemies' turns
+					}
+					if (upStage || upStageCount == 0)	{
+						Debug.Log ("Player 1 is Exhausted!");
+					}
+
 				}
 			}
 			///////////////////////////////////////////////////////////////
@@ -378,7 +408,8 @@ public class stateMachine : MonoBehaviour {
 					Debug.Log ("SELFHEAL Dance: " + charDatas [currentTurn - 1].currentHp);
 				}
 				if (currentAction == "dance2") {
-					Debug.Log ("Action Unwritten");
+					charDatas [currentTurn - 1].fightDam += 8;
+					Debug.Log ("REV UP: Fight Damage Increased!");
 				}
 				if (currentAction == "dance3") {
 					stirThePot = true;

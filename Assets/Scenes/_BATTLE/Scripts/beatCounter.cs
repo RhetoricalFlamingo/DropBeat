@@ -16,6 +16,7 @@ public class beatCounter : MonoBehaviour {
 	public bool inBattle;
 
 	public GameObject stateMachineObject;
+	public GameObject flawlessText;
 	public bool flawless = true;
 	public bool turnUpdate = false;
 
@@ -33,6 +34,13 @@ public class beatCounter : MonoBehaviour {
 		if (turnUpdate == true) {
 			flawless = true;
 			turnUpdate = false;
+		}
+
+		if (flawless) {
+			flawlessText.GetComponent<TextMesh> ().text = "Flawless!";
+		}
+		if (!flawless) {
+			flawlessText.GetComponent<TextMesh> ().text = "";
 		}
 	}
 
@@ -55,8 +63,11 @@ public class beatCounter : MonoBehaviour {
 
 			if (onBeat) {
 				beatSpriteRenderer.enabled = true;
-			} else
+				transform.localScale -= new Vector3 (.00375f, .00375f, 0);
+			} else {
 				beatSpriteRenderer.enabled = false;
+				transform.localScale = new Vector3 (0.06598309f, 0.06657582f, 1f);
+			}
 		}	
 	}
 }

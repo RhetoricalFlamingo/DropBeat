@@ -53,6 +53,8 @@ public class stateMachine : MonoBehaviour {
 
 	public bool inBattle = false;
 	public GameObject ABTran;
+	public bool flawless = true;
+	public GameObject beatCounterObject;
 
 	void Start () {
 		transform.position = oneFriendlyPosition;
@@ -62,12 +64,13 @@ public class stateMachine : MonoBehaviour {
 
 		statInit ();
 	}
-
+	
 	void Update () {
 		inBattle = ABTran.GetComponent<ABTransition> ().inBattle;
 
 		if (inBattle) {
 
+			flawless = beatCounterObject.GetComponent<beatCounter> ().flawless;
 			turnUpdate = false;
 
 			reticulePosition ();
@@ -356,56 +359,90 @@ public class stateMachine : MonoBehaviour {
 
 			///////////////////////////////////////////////////////////////FIGHT
 			if (currentAction == "fight") {
-				charDatas [target + 2].currentHp -= charDatas [currentTurn].fightDam;
-				Debug.Log ("Fight: " + charDatas [target + 2].currentHp);
+				if (flawless) {
+					charDatas [target + 2].currentHp -= (int)(charDatas [currentTurn].fightDam * 1.33f);
+					Debug.Log ("FLAWLESS Fight!: " + charDatas [target + 2].currentHp);
+				} else {
+					charDatas [target + 2].currentHp -= charDatas [currentTurn].fightDam;
+					Debug.Log ("Fight: " + charDatas [target + 2].currentHp);
+				}
 			}
 			///////////////////////////////////////////////////////////////DANCE
 			if (currentTurn == 1) {			//PC1
 				if (currentAction == "dance1") {	// X
 					for (int i = 3; i < 6; i++) {		//AOE
-						charDatas [i].currentHp -= 10;
-						Debug.Log ("AOE Dance: " + charDatas [i].currentHp);
+						if (flawless) {
+							charDatas [i].currentHp -= 15;
+							Debug.Log ("FLAWLESS AOE Dance: " + charDatas [i].currentHp);
+						} else {
+							charDatas [i].currentHp -= 10;
+							Debug.Log ("AOE Dance: " + charDatas [i].currentHp);
+						}
 					}
 				}
 				if (currentAction == "dance2") {	// []
-					charDatas [target + 2].currentHp -= 30;		//Recoil Hit
-					charDatas [currentTurn - 1].currentHp -= 10;
-					Debug.Log ("RECOIL Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
-
+					if (flawless) {
+						charDatas [target + 2].currentHp -= 45;		//Recoil Hit
+						charDatas [currentTurn - 1].currentHp -= 10;
+						Debug.Log ("FLAWLESS RECOIL Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
+					} else {
+						charDatas [target + 2].currentHp -= 30;		//Recoil Hit
+						charDatas [currentTurn - 1].currentHp -= 10;
+						Debug.Log ("RECOIL Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
+					}
 				}
 				if (currentAction == "dance3") {	// /\
+					if (upStage || upStageCount == 0)	{
+						Debug.Log ("Player 1 is Exhausted!");
+					}
 					if (!upStage && upStageCount != 0) {
 						upStage = true;
 						upStageCount = 3;
 						Debug.Log ("Upstage");		//Skip all enemies' turns
 					}
-					if (upStage || upStageCount == 0)	{
-						Debug.Log ("Player 1 is Exhausted!");
-					}
-
 				}
 			}
 			///////////////////////////////////////////////////////////////
 			if (currentTurn == 2) {			//PC2
 				if (currentAction == "dance1") {
-					for (int i = 0; i < 3; i++) {
-						charDatas [i].currentHp += 8;
-						Debug.Log ("TEAMHEAL Dance: " + charDatas [i].currentHp);
+					if (flawless) {
+						for (int i = 0; i < 3; i++) {
+							charDatas [i].currentHp += 12;
+							Debug.Log ("FLAWLESS TEAMHEAL Dance: " + charDatas [i].currentHp);
+						}
+					} else {
+						for (int i = 0; i < 3; i++) {
+							charDatas [i].currentHp += 8;
+							Debug.Log ("TEAMHEAL Dance: " + charDatas [i].currentHp);
+						}
 					}
 				}
 				if (currentAction == "dance2") {
-					charDatas [target + 2].currentHp -= 8;
-					charDatas [currentTurn - 1].currentHp += 5;
-					Debug.Log ("VAMP Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
+					if (flawless) {
+						charDatas [target + 2].currentHp -= 12;
+						charDatas [currentTurn - 1].currentHp += 8;
+						Debug.Log ("FLAWLESS VAMP Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
+					} else {
+						charDatas [target + 2].currentHp -= 8;
+						charDatas [currentTurn - 1].currentHp += 5;
+						Debug.Log ("VAMP Dance: " + charDatas [target + 2].currentHp + " - " + charDatas [currentTurn - 1].currentHp);
+					}
 				}
 				if (currentAction == "dance3") {
 					if (miracleUsed) {
 						Debug.Log ("Miracle has already been used this battle!");
 					}
 					if (!miracleUsed) {
-						for (int i = 0; i < 3; i++) {
-							charDatas [i].currentHp += 20;
-							Debug.Log ("MIRACLE Dance: " + charDatas [i].currentHp);
+						if (flawless) {
+							for (int i = 0; i < 3; i++) {
+								charDatas [i].currentHp += 28;
+								Debug.Log ("FLAWLESS MIRACLE Dance: " + charDatas [i].currentHp);
+							}
+						} else {
+							for (int i = 0; i < 3; i++) {
+								charDatas [i].currentHp += 20;
+								Debug.Log ("MIRACLE Dance: " + charDatas [i].currentHp);
+							}
 						}
 						miracleUsed = true;
 					}
@@ -414,12 +451,22 @@ public class stateMachine : MonoBehaviour {
 			///////////////////////////////////////////////////////////////
 			if (currentTurn == 3) {			//PC3
 				if (currentAction == "dance1") {
-					charDatas [currentTurn - 1].currentHp += 12;
-					Debug.Log ("SELFHEAL Dance: " + charDatas [currentTurn - 1].currentHp);
+					if (flawless) {
+						charDatas [currentTurn - 1].currentHp += 16;
+						Debug.Log ("FLAWLESS SELFHEAL Dance: " + charDatas [currentTurn - 1].currentHp);
+					} else {
+						charDatas [currentTurn - 1].currentHp += 12;
+						Debug.Log ("SELFHEAL Dance: " + charDatas [currentTurn - 1].currentHp);
+					}
 				}
 				if (currentAction == "dance2") {
-					charDatas [currentTurn - 1].fightDam += 8;
-					Debug.Log ("REV UP: Fight Damage Increased!");
+					if (flawless) {
+						charDatas [currentTurn - 1].fightDam += 12;
+						Debug.Log ("FLAWLESS REV UP: Fight Damage Increased!");
+					} else {
+						charDatas [currentTurn - 1].fightDam += 8;
+						Debug.Log ("REV UP: Fight Damage Increased!");
+					}
 				}
 				if (currentAction == "dance3") {
 					stirThePot = true;

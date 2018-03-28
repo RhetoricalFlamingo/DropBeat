@@ -1588,6 +1588,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.05
   ABTran: {fileID: 2129023825}
+  babot: {fileID: 752419574}
+  nearBabot: 0
+  npc1: {fileID: 743673047}
+  nearNpc1: 0
+  npc2: {fileID: 1214948850}
+  nearNpc2: 0
+  npc3: {fileID: 530221464}
+  nearNpc3: 0
 --- !u!50 &864681929
 Rigidbody2D:
   serializedVersion: 4

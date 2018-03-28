@@ -2068,7 +2068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108b1a372794a544c81a067549a7d4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceDuration: 0.5
+  bounceDuration: 0.4699
   bounceSpeed: 1
 --- !u!1 &1116134361
 GameObject:

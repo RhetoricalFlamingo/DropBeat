@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class reticuleBounce : MonoBehaviour {
 
+	public bool inBattle;
+
 	public float bounceDuration = 1.0f;
 	float bounceTimer = 0.0f;
 
@@ -19,32 +21,36 @@ public class reticuleBounce : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (!goingUp)	{
-			gameObject.transform.position -= new Vector3 (0, bounceSpeed * Time.deltaTime, 0);
-			Debug.Log ("goingdown");
-		}
-		if (goingUp)	{
-			gameObject.transform.position += new Vector3 (0, bounceSpeed * Time.deltaTime, 0);
-			Debug.Log ("goingup");
-		}
+		inBattle = gameObject.GetComponent<stateMachine> ().inBattle;
 
-		if (bounceTimer >= bounceDuration) {
-			if (!goingUp && !flippedThisFrame) {
-				goingUp = true;
-				Debug.Log ("up");
-				flippedThisFrame = true;
+		if (inBattle) {
+			if (!goingUp) {
+				gameObject.transform.position -= new Vector3 (0, bounceSpeed * Time.deltaTime, 0);
+				Debug.Log ("goingdown");
+			}
+			if (goingUp) {
+				gameObject.transform.position += new Vector3 (0, bounceSpeed * Time.deltaTime, 0);
+				Debug.Log ("goingup");
 			}
 
-			if (goingUp && !flippedThisFrame) {
-				goingUp = false;
-				Debug.Log ("down");
-				flippedThisFrame = true;
-			}
+			if (bounceTimer >= bounceDuration) {
+				if (!goingUp && !flippedThisFrame) {
+					goingUp = true;
+					Debug.Log ("up");
+					flippedThisFrame = true;
+				}
+
+				if (goingUp && !flippedThisFrame) {
+					goingUp = false;
+					Debug.Log ("down");
+					flippedThisFrame = true;
+				}
 				
-			bounceTimer = 0.0f;
-		}
+				bounceTimer = 0.0f;
+			}
 
-		bounceTimer += Time.deltaTime;
-		flippedThisFrame = false;
+			bounceTimer += Time.deltaTime;
+			flippedThisFrame = false;
+		}
 	}
 }

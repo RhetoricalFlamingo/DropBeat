@@ -25,7 +25,7 @@ public class PlayerMover_ADV : MonoBehaviour {
 	public GameObject npc3;
 	public bool nearNpc3;
 
-	float distanceCheck = 1.0f;
+	float distanceCheck = 2f;
 
 	// Use this for initialization
 	void Start () {

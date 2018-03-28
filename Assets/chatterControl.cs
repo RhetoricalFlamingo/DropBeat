@@ -26,6 +26,15 @@ public class chatterControl : MonoBehaviour {
 	string npc31 = "Did you know Babots pick their moves almost completely at random?";
 	string npc32 = "That's right! They're complete idiots!";
 
+	public GameObject player;
+	public bool nearBabot = false;
+	public bool nearNpc1 = false;
+	public 	bool nearNpc2 = false;
+	public 	bool nearNpc3 = false;
+
+	public GameObject textBackerTop;
+	public GameObject textBackerBot;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -33,6 +42,51 @@ public class chatterControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		proximityCheck ();
+
+		if (Input.GetKeyDown (KeyCode.E)) {
+			if (nearBabot) {
+				babotchatterCount++;
+				textBackerBot.SetActive (true);
+				Debug.Log ("babotTalk");
+			}
+
+			if (nearNpc1) {
+				npc1chatterCount++;
+				textBackerBot.SetActive (true);
+			}
+
+			if (nearNpc2) {
+				npc2chatterCount++;
+				textBackerTop.SetActive (true);
+			}
+
+			if (nearNpc3) {
+				npc3chatterCount++;
+				textBackerTop.SetActive (true);
+			}
+		}
+	}
+
+	void proximityCheck ()	{
+		nearBabot = player.GetComponent<PlayerMover_ADV> ().nearBabot;
+		if (!nearBabot) {
+			textBackerBot.SetActive (false);
+		}
+
+		nearNpc1 = player.GetComponent<PlayerMover_ADV> ().nearNpc1;
+		if (!nearNpc1) {
+			textBackerBot.SetActive (false);
+		}
+
+		nearNpc2 = player.GetComponent<PlayerMover_ADV> ().nearNpc2;
+		if (!nearNpc2) {
+			textBackerTop.SetActive (false);
+		}
+
+		nearNpc3 = player.GetComponent<PlayerMover_ADV> ().nearNpc3;
+		if (!nearNpc3) {
+			textBackerTop.SetActive (false);
+		}
 	}
 }

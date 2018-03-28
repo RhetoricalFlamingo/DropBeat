@@ -1930,6 +1930,7 @@ GameObject:
   - component: {fileID: 1104275901}
   - component: {fileID: 1104275900}
   - component: {fileID: 1104275902}
+  - component: {fileID: 1104275903}
   m_Layer: 0
   m_Name: reticule
   m_TagString: Untagged
@@ -2056,6 +2057,19 @@ MonoBehaviour:
   ABTran: {fileID: 2129023825}
   flawless: 1
   beatCounterObject: {fileID: 932332040}
+--- !u!114 &1104275903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1104275899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108b1a372794a544c81a067549a7d4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceDuration: 0.5
+  bounceSpeed: 1
 --- !u!1 &1116134361
 GameObject:
   m_ObjectHideFlags: 0

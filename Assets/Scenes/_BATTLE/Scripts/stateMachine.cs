@@ -11,6 +11,7 @@ public class stateMachine : MonoBehaviour {
 	public Vector3 oneEnemyPosition = new Vector3 (0, 0, 0);
 	public Vector3 twoEnemyPosition = new Vector3 (0, 0, 0);
 	public Vector3 threeEnemyPosition = new Vector3 (0, 0, 0);
+	bool turnChangedThisFrame = false;
 
 	public int currentTurn = 0;
 	bool turnFinished = false;
@@ -70,10 +71,11 @@ public class stateMachine : MonoBehaviour {
 
 		if (inBattle) {
 
+			turnChangedThisFrame = false;
+
 			flawless = beatCounterObject.GetComponent<beatCounter> ().flawless;
 			turnUpdate = false;
 
-			reticulePosition ();
 ///////////////////////////////////////////////////////////////////////////////////
 //********HUMAN PLAYER INPUT********///////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////	
@@ -164,29 +166,33 @@ public class stateMachine : MonoBehaviour {
 				currentTurn = 1;
 			}
 
+			reticulePosition ();
+
 			healthMonitor ();
 			endGame ();
 		}
 	}
 
 	public void reticulePosition ()	{
-		if (currentTurn == 1) {
-			transform.position = oneFriendlyPosition;
-		}
-		if (currentTurn == 2) {
-			transform.position = twoFriendlyPosition;
-		}
-		if (currentTurn == 3) {
-			transform.position = threeFriendlyPosition;
-		}
-		if (currentTurn == 4) {
-			transform.position = oneEnemyPosition;
-		}
-		if (currentTurn == 5) {
-			transform.position = twoEnemyPosition;
-		}
-		if (currentTurn == 6) {
-			transform.position = threeEnemyPosition;
+		if (turnChangedThisFrame) {
+			if (currentTurn == 1) {
+				transform.position = oneFriendlyPosition;
+			}
+			if (currentTurn == 2) {
+				transform.position = twoFriendlyPosition;
+			}
+			if (currentTurn == 3) {
+				transform.position = threeFriendlyPosition;
+			}
+			if (currentTurn == 4) {
+				transform.position = oneEnemyPosition;
+			}
+			if (currentTurn == 5) {
+				transform.position = twoEnemyPosition;
+			}
+			if (currentTurn == 6) {
+				transform.position = threeEnemyPosition;
+			}
 		}
 	}
 
@@ -340,6 +346,7 @@ public class stateMachine : MonoBehaviour {
 
 				//turnFinished = true;
 				currentTurn++;
+				turnChangedThisFrame = true;
 			}
 		}
 	}
@@ -479,6 +486,7 @@ public class stateMachine : MonoBehaviour {
 			currentMenu = "";
 			currentAction = "";
 			turnUpdate = true; //for rhythm mechanic
+			turnChangedThisFrame = true;
 		}
 	}
 }

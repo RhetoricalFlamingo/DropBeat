@@ -25,7 +25,7 @@ public class PlayerMover_ADV : MonoBehaviour {
 	public GameObject npc3;
 	public bool nearNpc3;
 
-	float distanceCheck = 2f;
+	float distanceCheck = 3f;
 
 	// Use this for initialization
 	void Start () {
@@ -76,8 +76,11 @@ public class PlayerMover_ADV : MonoBehaviour {
 	void chatterCheck ()	{
 		if (Vector2.Distance (gameObject.transform.position, babot.transform.position) <= distanceCheck) {
 			nearBabot = true;
-		} else
+		} else {
 			nearBabot = false;
+			Debug.Log ("far");
+		}
+			
 		
 		if (Vector2.Distance (gameObject.transform.position, npc1.transform.position) <= distanceCheck) {
 			nearNpc1 = true;

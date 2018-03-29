@@ -26,23 +26,23 @@ public class reticuleBounce : MonoBehaviour {
 		if (inBattle) {
 			if (!goingUp) {
 				gameObject.transform.position -= new Vector3 (0, bounceSpeed * Time.deltaTime, 0);
-				Debug.Log ("goingdown");
+				//Debug.Log ("goingdown");
 			}
 			if (goingUp) {
 				gameObject.transform.position += new Vector3 (0, bounceSpeed * Time.deltaTime, 0);
-				Debug.Log ("goingup");
+				//Debug.Log ("goingup");
 			}
 
 			if (bounceTimer >= bounceDuration) {
 				if (!goingUp && !flippedThisFrame) {
 					goingUp = true;
-					Debug.Log ("up");
+					//Debug.Log ("up");
 					flippedThisFrame = true;
 				}
 
 				if (goingUp && !flippedThisFrame) {
 					goingUp = false;
-					Debug.Log ("down");
+					//Debug.Log ("down");
 					flippedThisFrame = true;
 				}
 				

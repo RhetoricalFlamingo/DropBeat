@@ -33,6 +33,10 @@ public class chatterControl : MonoBehaviour {
 	public GameObject botText2;
 	public GameObject topText;
 	public GameObject topText2;
+	public GameObject babotPortrait;
+	public GameObject npc1Portrait;
+	public GameObject npc2Portrait;
+	public GameObject npc3Portrait;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +54,8 @@ public class chatterControl : MonoBehaviour {
 
 				botText.GetComponent<TextMesh> ().text = babot [babotchatterCount];
 				botText.SetActive (true);
+
+				babotPortrait.SetActive (true);
 			}
 
 			if (nearNpc1) {
@@ -59,6 +65,8 @@ public class chatterControl : MonoBehaviour {
 
 				botText2.GetComponent<TextMesh> ().text = npc1 [npc1chatterCount];
 				botText2.SetActive (true);
+
+				npc1Portrait.SetActive (true);
 			}
 
 			if (nearNpc2) {
@@ -68,6 +76,8 @@ public class chatterControl : MonoBehaviour {
 
 				topText.GetComponent<TextMesh> ().text = npc2 [npc2chatterCount];
 				topText.SetActive (true);
+
+				npc2Portrait.SetActive (true);
 			}
 
 			if (nearNpc3) {
@@ -77,6 +87,8 @@ public class chatterControl : MonoBehaviour {
 
 				topText2.GetComponent<TextMesh> ().text = npc3 [npc3chatterCount];
 				topText2.SetActive (true);
+
+				npc3Portrait.SetActive (true);
 			}
 		}
 
@@ -87,27 +99,30 @@ public class chatterControl : MonoBehaviour {
 		if (!nearBabot) {
 			textBackerBot.SetActive (false);
 			botText.SetActive (false);
+			babotPortrait.SetActive (false);
 		}
 
 		nearNpc1 = player.GetComponent<PlayerMover_ADV> ().nearNpc1;
 		if (!nearNpc1) {
 			textBackerBot2.SetActive (false);
 			botText2.SetActive (false);
+			npc1Portrait.SetActive (false);
 		}
 
 		nearNpc2 = player.GetComponent<PlayerMover_ADV> ().nearNpc2;
 		if (!nearNpc2) {
 			textBackerTop.SetActive (false);
 			topText.SetActive (false);
+			npc2Portrait.SetActive (false);
 		}
 
 		nearNpc3 = player.GetComponent<PlayerMover_ADV> ().nearNpc3;
 		if (!nearNpc3) {
 			textBackerTop2.SetActive (false);
 			topText2.SetActive (false);
+			npc3Portrait.SetActive (false);
 		}
 	}
-
 
 	void loadDialogue ()	{
 		babot[0] = "HEY! YOU!";

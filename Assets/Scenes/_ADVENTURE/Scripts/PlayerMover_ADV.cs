@@ -33,6 +33,8 @@ public class PlayerMover_ADV : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//transform.position = new Vector3 (transform.position.x, transform.position.y, -4);
+
 		moveSpeed = playerSpeed * Time.deltaTime;
 
 		if (Input.GetAxis ("rJoystickX") < .15f && Input.GetAxis ("rJoystickX") > -.15f && Input.GetAxis ("rJoystickY") < .15f && Input.GetAxis ("rJoystickY") > -.15f) {

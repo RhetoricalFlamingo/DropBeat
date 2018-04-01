@@ -2305,6 +2305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312874d20b2c31d48ae466fdd7fc22f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  babotchatterCount: -1
   player: {fileID: 864681924}
   nearBabot: 0
   nearNpc1: 0
@@ -4612,13 +4613,14 @@ MonoBehaviour:
   BGM: {fileID: 620184591}
   SFX: {fileID: 0}
   adventureLoop_BGM: {fileID: 0}
-  troublemakers_BGM: {fileID: 0}
+  troublemakers_BGM: {fileID: 8300000, guid: c12afd49a6c05df4eac0095ed3e0202f, type: 3}
   battleIntro_BGM: {fileID: 8300000, guid: bf8f72f1a56d0bd478d4c6fa20f39331, type: 3}
-  battle_BGM: {fileID: 8300000, guid: c3653628a6126604ca97750e0f428c7d, type: 3}
+  battle_BGM: {fileID: 8300000, guid: ecf31fc603f019343958c7ee7d08a057, type: 3}
   victoryIntro_BGM: {fileID: 0}
   victory_BGM: {fileID: 0}
   chatter: {fileID: 0}
   Transition: {fileID: 2129023825}
+  chatterObject: {fileID: 1022354167}
 --- !u!4 &2060259478
 Transform:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class chatterControl : MonoBehaviour {
-	int babotchatterCount = -1;
+	public int babotchatterCount = -1;
 	//int babotSize = 8;
 	string[] babot = new string[8];
 
@@ -161,25 +161,25 @@ public class chatterControl : MonoBehaviour {
 		if (babotchatterCount >= 8) {
 			babotchatterCount = -1;
 			endDialogue[0] = true;
-			Debug.Log ("babotwrap");
+			//Debug.Log ("babotwrap");
 		}
 			
 		if (npc1chatterCount >= 3) {
 			npc1chatterCount = -1;
 			endDialogue[1]= true;
-			Debug.Log ("1wrap");
+			//Debug.Log ("1wrap");
 		}
 
 		if (npc2chatterCount >= 2) {
 			npc2chatterCount = -1;
 			endDialogue[2] = true;
-			Debug.Log ("2wrap");
+			//Debug.Log ("2wrap");
 		}
 
 		if (npc3chatterCount >= 2) {
 			npc3chatterCount = -1;
 			endDialogue[3] = true;
-			Debug.Log ("3wrap");
+			//Debug.Log ("3wrap");
 		}
 	}
 }

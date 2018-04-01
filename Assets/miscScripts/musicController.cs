@@ -16,10 +16,12 @@ public class musicController : MonoBehaviour {
 	public AudioClip chatter;
 
 	public GameObject Transition;
+	public GameObject chatterObject;
 
-	bool inBattle;
-	bool battleIntroPlayed;
-	bool toggleChange = true;
+	bool battleIntroPlayed = false;
+	bool toggleChange = false;
+
+	AudioClip previousClip = null;
 
 	// Use this for initialization
 	void Start () {
@@ -28,16 +30,38 @@ public class musicController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		previousClip = BGM.clip;
 
-		inBattle = Transition.GetComponent<ABTransition> ().inBattle;
+		if (chatterObject.GetComponent<chatterControl> ().babotchatterCount > -1 && !toggleChange && !Transition.GetComponent<ABTransition> ().inBattle) {
+			BGM.loop = true;
+			BGM.clip = troublemakers_BGM;
+			if (previousClip != BGM.clip) {
+				toggleChange = true;
+			}
+		}
 
-		if (inBattle) {
-			BGM.clip = battleIntro_BGM;
+		if (Transition.GetComponent<ABTransition> ().inBattle) {
+			if (!battleIntroPlayed && !toggleChange) {
+				BGM.loop = false;
+				BGM.clip = battleIntro_BGM;
+				battleIntroPlayed = true;
+				if (previousClip != BGM.clip) {
+					toggleChange = true;
+				}
+			} 
+			else if (battleIntroPlayed && !toggleChange && !BGM.isPlaying) {
+				BGM.loop = true;
+				BGM.clip = battle_BGM;
+				if (previousClip != BGM.clip) {
+					toggleChange = true;
+				}
+			}
 		}
 
 		if (toggleChange) {
 			BGM.Play ();
 			toggleChange = false;
+			Debug.Log ("play");
 		}
 	}
 }

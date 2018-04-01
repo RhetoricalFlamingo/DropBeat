@@ -38,9 +38,15 @@ public class chatterControl : MonoBehaviour {
 	public GameObject npc2Portrait;
 	public GameObject npc3Portrait;
 
+	bool[] endDialogue = new bool[4];
+
 	// Use this for initialization
 	void Start () {
 		loadDialogue ();
+
+		for (int i = 0; i < endDialogue.Length; i++) {
+			endDialogue [i] = false;
+		}
 	}
 	
 	// Update is called once per frame
@@ -48,7 +54,7 @@ public class chatterControl : MonoBehaviour {
 		proximityCheck ();
 
 		if (Input.GetKeyDown (KeyCode.E)) {
-			if (nearBabot) {
+			if (nearBabot && !endDialogue[0]) {
 				babotchatterCount++;
 				textBackerBot.SetActive (true);
 
@@ -58,7 +64,7 @@ public class chatterControl : MonoBehaviour {
 				babotPortrait.SetActive (true);
 			}
 
-			if (nearNpc1) {
+			if (nearNpc1 && !endDialogue[1]) {
 				npc1chatterCount++;
 				textBackerBot2.SetActive (true);
 				botText2.SetActive (true);
@@ -69,7 +75,7 @@ public class chatterControl : MonoBehaviour {
 				npc1Portrait.SetActive (true);
 			}
 
-			if (nearNpc2) {
+			if (nearNpc2 && !endDialogue[2]) {
 				npc2chatterCount++;
 				textBackerTop.SetActive (true);
 				topText.SetActive (true);
@@ -80,7 +86,7 @@ public class chatterControl : MonoBehaviour {
 				npc2Portrait.SetActive (true);
 			}
 
-			if (nearNpc3) {
+			if (nearNpc3 && !endDialogue[3]) {
 				npc3chatterCount++;
 				textBackerTop2.SetActive (true);
 				topText2.SetActive (true);
@@ -92,6 +98,8 @@ public class chatterControl : MonoBehaviour {
 			}
 		}
 
+		wrapAround ();
+
 	}
 
 	void proximityCheck ()	{
@@ -100,6 +108,7 @@ public class chatterControl : MonoBehaviour {
 			textBackerBot.SetActive (false);
 			botText.SetActive (false);
 			babotPortrait.SetActive (false);
+			endDialogue[0] = false;
 		}
 
 		nearNpc1 = player.GetComponent<PlayerMover_ADV> ().nearNpc1;
@@ -107,6 +116,7 @@ public class chatterControl : MonoBehaviour {
 			textBackerBot2.SetActive (false);
 			botText2.SetActive (false);
 			npc1Portrait.SetActive (false);
+			endDialogue[1] = false;
 		}
 
 		nearNpc2 = player.GetComponent<PlayerMover_ADV> ().nearNpc2;
@@ -114,6 +124,7 @@ public class chatterControl : MonoBehaviour {
 			textBackerTop.SetActive (false);
 			topText.SetActive (false);
 			npc2Portrait.SetActive (false);
+			endDialogue[2] = false;
 		}
 
 		nearNpc3 = player.GetComponent<PlayerMover_ADV> ().nearNpc3;
@@ -121,6 +132,7 @@ public class chatterControl : MonoBehaviour {
 			textBackerTop2.SetActive (false);
 			topText2.SetActive (false);
 			npc3Portrait.SetActive (false);
+			endDialogue[3] = false;
 		}
 	}
 
@@ -143,5 +155,31 @@ public class chatterControl : MonoBehaviour {
 
 		npc3[0] = "Did you know Babots pick\ntheir moves almost\ncompletely at random?";
 		npc3[1] = "That's right! They're\ncomplete idiots!";
+	}
+
+	void wrapAround ()	{
+		if (babotchatterCount >= 8) {
+			babotchatterCount = -1;
+			endDialogue[0] = true;
+			Debug.Log ("babotwrap");
+		}
+			
+		if (npc1chatterCount >= 3) {
+			npc1chatterCount = -1;
+			endDialogue[1]= true;
+			Debug.Log ("1wrap");
+		}
+
+		if (npc2chatterCount >= 2) {
+			npc2chatterCount = -1;
+			endDialogue[2] = true;
+			Debug.Log ("2wrap");
+		}
+
+		if (npc3chatterCount >= 2) {
+			npc3chatterCount = -1;
+			endDialogue[3] = true;
+			Debug.Log ("3wrap");
+		}
 	}
 }

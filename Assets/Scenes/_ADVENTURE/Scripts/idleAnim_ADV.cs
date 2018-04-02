@@ -18,7 +18,7 @@ public class idleAnim_ADV : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		duration = Random.Range (1.5f, 4);
+		duration = Random.Range (1, 4);
 		timer += 1 * Time.deltaTime;
 
 		if (timer >= duration) {

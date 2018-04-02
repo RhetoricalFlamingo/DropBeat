@@ -1895,7 +1895,7 @@ GameObject:
   - component: {fileID: 864681929}
   - component: {fileID: 864681928}
   m_Layer: 0
-  m_Name: Test Friendly
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1933,7 +1933,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a39621cebfa02604cbee5ed7a7125b15, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f914ce8db174434b8e0868a91154ec9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1972,7 +1972,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.92, y: 15.93}
+    oldSize: {x: 10.636364, y: 19.272728}
     newSize: {x: 15.92, y: 15.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2002,6 +2002,8 @@ MonoBehaviour:
   nearNpc2: 0
   npc3: {fileID: 1913444612}
   nearNpc3: 0
+  front: {fileID: 21300000, guid: 1f914ce8db174434b8e0868a91154ec9, type: 3}
+  back: {fileID: 21300000, guid: e1cae3de4cd1806478e1bc1059191e17, type: 3}
 --- !u!50 &864681929
 Rigidbody2D:
   serializedVersion: 4

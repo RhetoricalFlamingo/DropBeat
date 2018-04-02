@@ -9,6 +9,8 @@ public class idleAnim_ADV : MonoBehaviour {
 	float duration = 0.0f;
 	float timer = 0.0f;
 
+	public bool isBack = false;
+
 	bool turnChange = true;
 
 	// Use this for initialization
@@ -18,7 +20,11 @@ public class idleAnim_ADV : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		duration = Random.Range (1, 4);
+		if (!isBack) {
+			duration = Random.Range (1, 4);
+		} else if (isBack) {
+			duration = 1.35f;
+		}
 		timer += 1 * Time.deltaTime;
 
 		if (timer >= duration) {

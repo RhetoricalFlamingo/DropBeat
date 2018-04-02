@@ -49,27 +49,27 @@ public class PlayerMover_ADV : MonoBehaviour {
 		if (!inBattle) {
 
 			if ((Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetAxis ("rJoystickX") < -.85f) && rStickNeutral) {
-				newPosition = transform.position -= Vector3.right * 1.5f;
+				newPosition = transform.position -= Vector3.right * 1.7f;
 				transform.position = Vector2.MoveTowards (transform.position, newPosition, moveSpeed);
 				rStickNeutral = false;
 			
 				this.GetComponent<SpriteRenderer> ().flipX = true;
 			}
 			if ((Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.RightArrow) || Input.GetAxis ("rJoystickX") > .85f) && rStickNeutral)  {
-				newPosition = transform.position += Vector3.right * 1.5f;
+				newPosition = transform.position += Vector3.right * 1.7f;
 				transform.position = Vector2.MoveTowards (transform.position, newPosition, moveSpeed);
 				rStickNeutral = false;
 
 				this.GetComponent<SpriteRenderer> ().flipX = false;
 			}
 			if ((Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.UpArrow) || Input.GetAxis ("rJoystickY") > .85f) && rStickNeutral) {
-				newPosition = transform.position += Vector3.up * 1.5f;
+				newPosition = transform.position += Vector3.up * 1.7f;
 				transform.position = Vector2.MoveTowards (transform.position, newPosition, moveSpeed);
 				rStickNeutral = false;
 				this.GetComponent<SpriteRenderer> ().sprite = back;
 			}
 			if ((Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.DownArrow) || Input.GetAxis ("rJoystickY") < -.85f) && rStickNeutral) {
-				newPosition = transform.position -= Vector3.up * 1.5f;
+				newPosition = transform.position -= Vector3.up * 1.7f;
 				transform.position = Vector2.MoveTowards (transform.position, newPosition, moveSpeed);
 				rStickNeutral = false;
 				this.GetComponent<SpriteRenderer> ().sprite = front;

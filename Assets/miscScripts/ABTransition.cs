@@ -13,7 +13,7 @@ public class ABTransition : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		adventureCam = cam.transform.position;
 	}
 	
 	// Update is called once per frame

@@ -6,6 +6,7 @@ public class ABTransition : MonoBehaviour {
 
 	public bool inBattle;
 	public GameObject ATran;
+	public GameObject chatter;
 
 	public Vector3 adventureCam = new Vector3 (0, 0, -10);
 	public Vector3 battleCam = new Vector3 (0, 0, -10);
@@ -18,7 +19,9 @@ public class ABTransition : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		inBattle = ATran.GetComponent<ATransition> ().inBattle;
+		if (chatter.GetComponent<chatterControl> ().transitionTrigger) {
+			inBattle = true;
+		}
 
 		if (inBattle) {
 			cam.transform.position = battleCam;

@@ -40,6 +40,11 @@ public class chatterControl : MonoBehaviour {
 
 	bool[] endDialogue = new bool[4];
 
+	public GameObject bBars1;
+	public GameObject bBars2;
+	float barSpeed = 7.5f;
+	public bool transitionTrigger = false;
+
 	// Use this for initialization
 	void Start () {
 		loadDialogue ();
@@ -100,6 +105,9 @@ public class chatterControl : MonoBehaviour {
 
 		wrapAround ();
 
+		if (babotchatterCount >= 7) {
+			chatterTransition ();
+		}
 	}
 
 	void proximityCheck ()	{
@@ -144,7 +152,7 @@ public class chatterControl : MonoBehaviour {
 		babot[4] = "...WE are the Babots,\nthe raddest dancemeisters\nin the YARD!";
 		babot[5] = "And if you don't give us\nroom to dance, we'll\nSHUT YOU DOWN.";
 		babot[6] = "Go talk to the wallflowers\nor something; don't\nbother us again.";
-		babot[7] = "Alright, you asked for it...\nBABOTS: G E T  F U N K Y!";
+		babot[7] = "Alright, you asked for it...\nBABOTS: GET FUNKY!";
 
 		npc1[0] = "Those dang Babots ain't\ngot no rhythm...";
 		npc1[1] = "Try only pressing buttons\non the beat to get\nan edge!";
@@ -180,6 +188,18 @@ public class chatterControl : MonoBehaviour {
 			npc3chatterCount = -1;
 			endDialogue[3] = true;
 			//Debug.Log ("3wrap");
+		}
+	}
+
+	void chatterTransition ()	{
+		bBars1.transform.position += Vector3.right * barSpeed * Time.deltaTime;
+		bBars2.transform.position -= Vector3.right * barSpeed * Time.deltaTime;
+
+		if (bBars2.transform.localPosition.x <= 0) {
+			transitionTrigger = true;
+		
+			Destroy (bBars2);
+			Destroy (bBars1);
 		}
 	}
 }

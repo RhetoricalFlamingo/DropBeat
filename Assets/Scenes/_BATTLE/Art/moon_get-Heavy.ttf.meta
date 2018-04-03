@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a0722bee439fe804dbbdd8f8b1597954
+timeCreated: 1522766210
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MOON GET!
+  fontNames:
+  - MOON GET!
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

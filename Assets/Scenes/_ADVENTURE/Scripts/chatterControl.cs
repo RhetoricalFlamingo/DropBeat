@@ -166,11 +166,11 @@ public class chatterControl : MonoBehaviour {
 	}
 
 	void wrapAround ()	{
-		if (babotchatterCount >= 8) {
-			babotchatterCount = -1;
-			endDialogue[0] = true;
-			//Debug.Log ("babotwrap");
-		}
+		//if (babotchatterCount >= 8) {
+		//	babotchatterCount = -1;
+		//	endDialogue[0] = true;
+		//	Debug.Log ("babotwrap");
+		//}
 			
 		if (npc1chatterCount >= 3) {
 			npc1chatterCount = -1;

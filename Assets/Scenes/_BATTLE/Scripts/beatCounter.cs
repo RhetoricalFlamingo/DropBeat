@@ -29,23 +29,25 @@ public class beatCounter : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!ISBACKGROUND) {
-			if (Input.anyKeyDown && onBeat == false) {
-				flawless = false;
-			}
+		if (inBattle) {
+			if (!ISBACKGROUND) {
+				if (Input.anyKeyDown && onBeat == false) {
+					flawless = false;
+				}
 
-			turnUpdate = stateMachineObject.GetComponent<stateMachine> ().turnUpdate;
+				turnUpdate = stateMachineObject.GetComponent<stateMachine> ().turnUpdate;
 
-			if (turnUpdate == true) {
-				flawless = true;
-				turnUpdate = false;
-			}
+				if (turnUpdate == true) {
+					flawless = true;
+					turnUpdate = false;
+				}
 
-			if (flawless) {
-				flawlessText.GetComponent<TextMesh> ().text = "Flawless!";
-			}
-			if (!flawless) {
-				flawlessText.GetComponent<TextMesh> ().text = "";
+				if (flawless) {
+					flawlessText.GetComponent<TextMesh> ().text = "Flawless!";
+				}
+				if (!flawless) {
+					flawlessText.GetComponent<TextMesh> ().text = "";
+				}
 			}
 		}
 	}

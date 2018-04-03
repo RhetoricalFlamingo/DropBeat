@@ -20,27 +20,33 @@ public class beatCounter : MonoBehaviour {
 	public bool flawless = true;
 	public bool turnUpdate = false;
 
+	public bool ISBACKGROUND = false;
+	int currentSprite = 1;
+	public Sprite[] backgrounds = new Sprite[4];
+
 	void Start () {
 		beatSpriteRenderer = GetComponent<SpriteRenderer> ();
 	}
 
 	void Update () {
-		if (Input.anyKeyDown && onBeat == false) {
-			flawless = false;
-		}
+		if (!ISBACKGROUND) {
+			if (Input.anyKeyDown && onBeat == false) {
+				flawless = false;
+			}
 
-		turnUpdate = stateMachineObject.GetComponent<stateMachine> ().turnUpdate;
+			turnUpdate = stateMachineObject.GetComponent<stateMachine> ().turnUpdate;
 
-		if (turnUpdate == true) {
-			flawless = true;
-			turnUpdate = false;
-		}
+			if (turnUpdate == true) {
+				flawless = true;
+				turnUpdate = false;
+			}
 
-		if (flawless) {
-			flawlessText.GetComponent<TextMesh> ().text = "Flawless!";
-		}
-		if (!flawless) {
-			flawlessText.GetComponent<TextMesh> ().text = "";
+			if (flawless) {
+				flawlessText.GetComponent<TextMesh> ().text = "Flawless!";
+			}
+			if (!flawless) {
+				flawlessText.GetComponent<TextMesh> ().text = "";
+			}
 		}
 	}
 
@@ -61,12 +67,23 @@ public class beatCounter : MonoBehaviour {
 				currentTime = 0;
 			}
 
-			if (onBeat) {
-				beatSpriteRenderer.enabled = true;
-				transform.localScale -= new Vector3 (.00375f, .00375f, 0);
-			} else {
-				beatSpriteRenderer.enabled = false;
-				transform.localScale = new Vector3 (0.06598309f, 0.06657582f, 1f);
+			if (!ISBACKGROUND) {
+				if (onBeat) {
+					beatSpriteRenderer.enabled = true;
+					transform.localScale -= new Vector3 (.00375f, .00375f, 0);
+				} else {
+					beatSpriteRenderer.enabled = false;
+					transform.localScale = new Vector3 (0.06598309f, 0.06657582f, 1f);
+				}
+			} else if (ISBACKGROUND) {
+				if (currentTime == 0) {
+					currentSprite++;
+				}
+				if (currentSprite > 3) {
+					currentSprite = 0;
+				}
+
+				this.GetComponent<SpriteRenderer> ().sprite = backgrounds [currentSprite];
 			}
 		}	
 	}

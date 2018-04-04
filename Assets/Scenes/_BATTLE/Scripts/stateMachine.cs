@@ -32,7 +32,10 @@ public class stateMachine : MonoBehaviour {
 	public Sprite faceDance2;
 	public Sprite faceDance3;
 
-	public GameObject youwinSprite;
+	public GameObject[] charPortraits = new GameObject[6];
+
+	public GameObject winBacker;
+	public GameObject winText;
 
 	[System.Serializable]
 	public class CharacterData
@@ -268,6 +271,7 @@ public class stateMachine : MonoBehaviour {
 
 			if (charDatas [i].currentHp <= 0) {
 				charDatas [i].isAlive = false;
+				Destroy (charPortraits [i]);
 			}
 		}
 	}
@@ -356,7 +360,8 @@ public class stateMachine : MonoBehaviour {
 			Debug.Log ("No One is Able To Fight! YOU LOSE!");
 		}
 		if (charDatas [3].currentHp <= 0 && charDatas [4].currentHp <= 0 && charDatas [5].currentHp <= 0) {
-			youwinSprite.SetActive (true);
+			winBacker.SetActive (true);
+			winText.SetActive (true);
 			Debug.Log ("All Enemies Are Down! YOU WIN!");
 		}
 	}

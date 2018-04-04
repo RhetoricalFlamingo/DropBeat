@@ -198,8 +198,8 @@ public class chatterControl : MonoBehaviour {
 		if (bBars2.transform.localPosition.x <= 0) {
 			transitionTrigger = true;
 		
-			Destroy (bBars2);
-			Destroy (bBars1);
+			bBars1.SetActive (false);
+			bBars2.SetActive (false);
 		}
 	}
 }

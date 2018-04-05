@@ -58,7 +58,7 @@ public class chatterControl : MonoBehaviour {
 	void Update () {
 		proximityCheck ();
 
-		if (Input.GetKeyDown (KeyCode.E)) {
+		if (Input.GetKeyDown (KeyCode.E) || Input.GetKeyDown (KeyCode.JoystickButton1)) {
 			if (nearBabot && !endDialogue[0]) {
 				babotchatterCount++;
 				textBackerBot.SetActive (true);

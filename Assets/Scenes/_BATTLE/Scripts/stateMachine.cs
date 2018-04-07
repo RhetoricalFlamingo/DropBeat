@@ -38,6 +38,13 @@ public class stateMachine : MonoBehaviour {
 	public GameObject winText;
 	public GameObject HPBars;
 	public GameObject xPrompt;
+	public bool inVictoryScreen = false;
+	public GameObject flawlessText;
+	public GameObject beatCounter;
+	public GameObject gameOver;
+	public GameObject loseText;
+	public GameObject loseText2;
+	public AudioSource BGM;
 
 	[System.Serializable]
 	public class CharacterData
@@ -361,14 +368,20 @@ public class stateMachine : MonoBehaviour {
 		if (charDatas [0].currentHp <= 0 && charDatas [1].currentHp <= 0 && charDatas [2].currentHp <= 0) {
 			xPrompt.SetActive (true);
 			HPBars.SetActive (false);
-			Debug.Log ("No One is Able To Fight! YOU LOSE!");
+			gameOver.SetActive (true);
+			loseText.SetActive (true);
+			loseText2.SetActive (true);
+			BGM.volume -= .075f;
 		}
 		if (charDatas [3].currentHp <= 0 && charDatas [4].currentHp <= 0 && charDatas [5].currentHp <= 0) {
 			HPBars.SetActive (false);
 			xPrompt.SetActive (true);
 			winBacker.SetActive (true);
 			winText.SetActive (true);
-			Debug.Log ("All Enemies Are Down! YOU WIN!");
+			beatCounter.GetComponent<SpriteRenderer> ().sprite = null;
+			flawlessText.SetActive (false);
+			faceButtonUI.SetActive (false);
+			inVictoryScreen = true;
 		}
 	}
 

@@ -17,9 +17,14 @@ public class musicController : MonoBehaviour {
 
 	public GameObject Transition;
 	public GameObject chatterObject;
+	public GameObject reticule;
 
 	bool battleIntroPlayed = false;
 	bool toggleChange = false;
+
+	bool victoryIntroPlayed = false;
+	bool victoryToggleChange = false;
+	bool inVictoryScreen = false;
 
 	AudioClip previousClip = null;
 
@@ -31,7 +36,39 @@ public class musicController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		previousClip = BGM.clip;
+		inVictoryScreen = reticule.GetComponent<stateMachine> ().inVictoryScreen;
 
+		if (inVictoryScreen) {
+			if (!victoryIntroPlayed && !victoryToggleChange) {
+				BGM.loop = false;
+				BGM.clip = victoryIntro_BGM;
+				victoryIntroPlayed = true;
+				if (previousClip != BGM.clip) {
+					victoryToggleChange = true;
+				}
+			}
+			else if (victoryIntroPlayed && !victoryToggleChange && !BGM.isPlaying) {
+				BGM.loop = true;
+				BGM.clip = victory_BGM;
+				if (previousClip != BGM.clip) {
+					victoryToggleChange = true;
+				}
+			}
+
+			if (victoryToggleChange) {
+				BGM.Play ();
+				victoryToggleChange = false;
+				Debug.Log ("victoryPlay");
+			}
+		}
+
+		else if (!inVictoryScreen) {
+			bgmFunc ();
+		}
+	}
+
+	public void bgmFunc ()	{
+		
 		if (chatterObject.GetComponent<chatterControl> ().babotchatterCount > -1 && !toggleChange && !Transition.GetComponent<ABTransition> ().inBattle) {
 			BGM.loop = true;
 			BGM.clip = troublemakers_BGM;
@@ -48,7 +85,7 @@ public class musicController : MonoBehaviour {
 				if (previousClip != BGM.clip) {
 					toggleChange = true;
 				}
-			} 
+			}
 			else if (battleIntroPlayed && !toggleChange && !BGM.isPlaying) {
 				BGM.loop = true;
 				BGM.clip = battle_BGM;

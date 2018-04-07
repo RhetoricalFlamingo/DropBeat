@@ -195,7 +195,7 @@ public class chatterControl : MonoBehaviour {
 		bBars1.transform.position += Vector3.right * barSpeed * Time.deltaTime;
 		bBars2.transform.position -= Vector3.right * barSpeed * Time.deltaTime;
 
-		if (bBars2.transform.localPosition.x <= 0) {
+		if (bBars2.transform.localPosition.x <= -1.3f) {
 			transitionTrigger = true;
 		
 			bBars1.SetActive (false);

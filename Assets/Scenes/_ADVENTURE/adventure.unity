@@ -1896,11 +1896,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243533290624671726, guid: 5e01aadc72eadad4e98a9412f355cbf1,
     type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 1893e67c06b83864eb860a7b805fae1f, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2942,7 +2942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTime: 0
-  beatTime: 0.3579
+  beatTime: 0.21
   bufferPeriod: 0.112
   onBeat: 0
   beatSpriteRenderer: {fileID: 0}

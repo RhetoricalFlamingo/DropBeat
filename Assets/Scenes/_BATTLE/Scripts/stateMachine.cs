@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class stateMachine : MonoBehaviour {
 
@@ -69,6 +70,8 @@ public class stateMachine : MonoBehaviour {
 	public bool flawless = true;
 	public GameObject beatCounterObject;
 
+
+
 	void Start () {
 		transform.position = oneFriendlyPosition;
 		currentTurn = 1;
@@ -88,86 +91,7 @@ public class stateMachine : MonoBehaviour {
 			flawless = beatCounterObject.GetComponent<beatCounter> ().flawless;
 			turnUpdate = false;
 
-///////////////////////////////////////////////////////////////////////////////////
-//********HUMAN PLAYER INPUT********///////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////	
-			if (currentTurn < 4) {		//add "&& oneFriendlyDat.isAlive, and make this a FOR statment
-
-				if (charDatas [currentTurn - 1].isAlive) {
-///////////////////////////////////////////////////////////////////////////////////
-//**************TOP MENU/////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////
-					if (currentMenu == "target") {
-						faceButtonRend.sprite = faceTarget;
-
-						if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
-							target = 1;
-							turnFinished = true;
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
-							target = 2;
-							turnFinished = true;
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
-							target = 3;
-							turnFinished = true;
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
-							currentAction = "";
-							currentMenu = previousMenu;
-						}
-					}
-				
-					if (currentMenu == "dance") {
-						if (currentTurn == 1) {
-							faceButtonRend.sprite = faceDance1;
-						}
-						if (currentTurn == 2) {
-							faceButtonRend.sprite = faceDance2;
-						}
-						if (currentTurn == 3) {
-							faceButtonRend.sprite = faceDance3;
-						}
-
-						previousMenu = "dance";
-
-						if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
-							currentAction = "dance1";
-							currentMenu = "target";
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
-							currentAction = "dance2";
-							currentMenu = "target";
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
-							currentAction = "dance3";
-							currentMenu = "target";
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
-							currentMenu = "";	//return to previous menu
-						}
-					}
-						
-
-					if (currentMenu == "") {		//Fight goes directly to targeting menu
-						faceButtonRend.sprite = faceInit;
-
-						if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
-							currentAction = "fight";
-							currentMenu = "target";
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
-							currentMenu = "dance";
-						} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
-							currentMenu = "run";
-						}
-					}
-
-					if (currentMenu == "run") {
-						Debug.Log ("There's no escaping!");
-						currentMenu = "";
-					}
-				}
-
-				if (!charDatas [currentTurn - 1].isAlive) {
-					currentMenu = "";
-					currentAction = "";
-					turnFinished = true;
-				}
-			}
+			menuing ();
 				
 			combatAI ();
 	
@@ -182,6 +106,89 @@ public class stateMachine : MonoBehaviour {
 
 			healthMonitor ();
 			endGame ();
+		}
+	}
+
+	public void menuing	()	{
+		///////////////////////////////////////////////////////////////////////////////////
+		//********HUMAN PLAYER INPUT********///////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////////	
+		if (currentTurn < 4) {
+
+			if (charDatas [currentTurn - 1].isAlive) {
+				///////////////////////////////////////////////////////////////////////////////////
+				//**************TOP MENU/////////////////////////////////////////////////////////////////////////
+				///////////////////////////////////////////////////////////////////////////////////
+				if (currentMenu == "target") {
+					faceButtonRend.sprite = faceTarget;
+
+					if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
+						target = 1;
+						turnFinished = true;
+					} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
+						target = 2;
+						turnFinished = true;
+					} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
+						target = 3;
+						turnFinished = true;
+					} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
+						currentAction = "";
+						currentMenu = previousMenu;
+					}
+				}
+
+				if (currentMenu == "dance") {
+					if (currentTurn == 1) {
+						faceButtonRend.sprite = faceDance1;
+					}
+					if (currentTurn == 2) {
+						faceButtonRend.sprite = faceDance2;
+					}
+					if (currentTurn == 3) {
+						faceButtonRend.sprite = faceDance3;
+					}
+
+					previousMenu = "dance";
+
+					if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
+						currentAction = "dance1";
+						currentMenu = "target";
+					} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
+						currentAction = "dance2";
+						currentMenu = "target";
+					} else if (Input.GetKeyDown (KeyCode.JoystickButton3)) {
+						currentAction = "dance3";
+						currentMenu = "target";
+					} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
+						currentMenu = "";	//return to previous menu
+					}
+				}
+
+
+				if (currentMenu == "") {		//Fight goes directly to targeting menu
+					faceButtonRend.sprite = faceInit;
+
+					if (Input.GetKeyDown (KeyCode.JoystickButton1)) {
+						currentAction = "fight";
+						currentMenu = "target";
+					} else if (Input.GetKeyDown (KeyCode.JoystickButton0)) {
+						currentMenu = "dance";
+					} else if (Input.GetKeyDown (KeyCode.JoystickButton2)) {
+						currentMenu = "run";
+					}
+				}
+
+				if (currentMenu == "run") {
+					Debug.Log ("There's no escaping!");
+					currentMenu = "";
+				}
+			}
+
+			if (!charDatas [currentTurn - 1].isAlive) {
+				currentMenu = "";
+				currentAction = "";
+				turnFinished = true;
+			}
 		}
 	}
 

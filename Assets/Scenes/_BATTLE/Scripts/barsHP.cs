@@ -8,6 +8,11 @@ public class barsHP : MonoBehaviour {
 	public GameObject reticuleStateMachine;
 
 	public Text HP;
+	public int[] previousHPs = new int[6];
+	public int[] newHPs = new int[6];
+	public GameObject[] damageTexts = new GameObject[6];
+
+	public bool prime = false;
 
 	public bool inBattle;
 
@@ -62,6 +67,21 @@ public class barsHP : MonoBehaviour {
 		if (inBattle) {
 			HP.text = reticuleStateMachine.GetComponent<stateMachine> ().charDatas [i].currentHp + "/" +
 						reticuleStateMachine.GetComponent<stateMachine> ().charDatas [i].maxHp;
+		}
+
+		if (prime) {
+			for (int j = 0; j < newHPs.Length; j++) {
+				newHPs [j] = reticuleStateMachine.GetComponent<stateMachine> ().charDatas [j].currentHp;
+
+				if (previousHPs [j] != newHPs [j]) {
+					damageTexts [j].GetComponent<Text> ().text = "" + (newHPs [j] - previousHPs [j]);
+
+					if (inBattle) {
+						damageTexts [j].SetActive (true);
+					}
+				}
+				previousHPs [j] = newHPs [j];
+			}
 		}
 	}
 }

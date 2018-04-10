@@ -2849,6 +2849,7 @@ GameObject:
   - component: {fileID: 909874604}
   - component: {fileID: 909874606}
   - component: {fileID: 909874605}
+  - component: {fileID: 909874607}
   m_Layer: 5
   m_Name: loseText_?
   m_TagString: Untagged
@@ -2913,6 +2914,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 909874603}
+--- !u!114 &909874607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909874603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e94cc7b16c6d6e48b293357d44ce7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateDuration: 0.8
+  rotateSpeedY: 15
+  rotateSpeedZ: 15
 --- !u!1 &932332040
 GameObject:
   m_ObjectHideFlags: 0

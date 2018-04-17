@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class stateMachine : MonoBehaviour {
 
 //Different Reticule Positions
-	public Vector3 oneFriendlyPosition = new Vector3 (0, 0, 0);
+	/*public Vector3 oneFriendlyPosition = new Vector3 (0, 0, 0);
 	public Vector3 twoFriendlyPosition = new Vector3 (0, 0, 0);
 	public Vector3 threeFriendlyPosition = new Vector3 (0, 0, 0);
 	public Vector3 oneEnemyPosition = new Vector3 (0, 0, 0);
 	public Vector3 twoEnemyPosition = new Vector3 (0, 0, 0);
-	public Vector3 threeEnemyPosition = new Vector3 (0, 0, 0);
+	public Vector3 threeEnemyPosition = new Vector3 (0, 0, 0);*/
+
 	bool turnChangedThisFrame = false;
 
 	public int currentTurn = 0;
@@ -73,7 +74,7 @@ public class stateMachine : MonoBehaviour {
 
 
 	void Start () {
-		transform.position = oneFriendlyPosition;
+		transform.position = charPortraits[0].transform.position + new Vector3 (0,3,-1);
 		currentTurn = 1;
 
 		faceButtonRend = faceButtonUI.GetComponent<SpriteRenderer> ();
@@ -194,24 +195,27 @@ public class stateMachine : MonoBehaviour {
 
 	public void reticulePosition ()	{
 		if (turnChangedThisFrame) {
-			if (currentTurn == 1) {
-				transform.position = oneFriendlyPosition;
+
+			transform.position = charPortraits [currentTurn - 1].transform.position + new Vector3 (0,3,-1);
+
+			/*if (currentTurn == 1) {
+				transform.position = charPortraits[0].transform.position + new Vector3 (0,3,-1);
 			}
 			if (currentTurn == 2) {
-				transform.position = twoFriendlyPosition;
+				transform.position = charPortraits[1].transform.position + new Vector3 (0,3,-1);
 			}
 			if (currentTurn == 3) {
-				transform.position = threeFriendlyPosition;
+				transform.position = charPortraits[2].transform.position + new Vector3 (0,3,-1);
 			}
 			if (currentTurn == 4) {
-				transform.position = oneEnemyPosition;
+				transform.position = charPortraits[3].transform.position + new Vector3 (0,3,-1);
 			}
 			if (currentTurn == 5) {
-				transform.position = twoEnemyPosition;
+				transform.position = charPortraits[4].transform.position + new Vector3 (0,3,-1);
 			}
 			if (currentTurn == 6) {
-				transform.position = threeEnemyPosition;
-			}
+				transform.position = charPortraits[5].transform.position + new Vector3 (0,3,-1);
+			}*/
 		}
 	}
 

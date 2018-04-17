@@ -24,8 +24,12 @@ public class beatCounter : MonoBehaviour {
 	int currentSprite = 1;
 	public Sprite[] backgrounds = new Sprite[4];
 
+	public Camera cam;
+	public float cameraShakeAmount;
+
 	void Start () {
 		beatSpriteRenderer = GetComponent<SpriteRenderer> ();
+
 	}
 
 	void Update () {
@@ -73,9 +77,12 @@ public class beatCounter : MonoBehaviour {
 				if (onBeat) {
 					beatSpriteRenderer.enabled = true;
 					transform.localScale -= new Vector3 (.00375f, .00375f, 0);
+					cam.orthographicSize -= cameraShakeAmount * Time.deltaTime;
 				} else {
 					beatSpriteRenderer.enabled = false;
 					transform.localScale = new Vector3 (0.06598309f, 0.06657582f, 1f);
+					cam.orthographicSize = 12;
+
 				}
 			} else if (ISBACKGROUND) {
 				if (currentTime == 0) {

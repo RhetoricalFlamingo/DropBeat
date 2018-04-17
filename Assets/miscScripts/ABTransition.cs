@@ -19,11 +19,12 @@ public class ABTransition : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		bool wasInBattle = inBattle;
 		if (chatter.GetComponent<chatterControl> ().transitionTrigger) {
 			inBattle = true;
 		}
 
-		if (inBattle) {
+		if (inBattle && !wasInBattle) {
 			cam.transform.position = battleCam;
 			cam.GetComponent<Camera> ().orthographicSize = 12;
 		}

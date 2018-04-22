@@ -38,6 +38,7 @@ public class stateMachine : MonoBehaviour {
 
 	public GameObject winBacker;
 	public GameObject winText;
+	public GameObject HPUI;
 	public GameObject HPBars;
 	public GameObject xPrompt;
 	public bool inVictoryScreen = false;
@@ -379,6 +380,7 @@ public class stateMachine : MonoBehaviour {
 		if (charDatas [0].currentHp <= 0 && charDatas [1].currentHp <= 0 && charDatas [2].currentHp <= 0) {
 			xPrompt.SetActive (true);
 			HPBars.SetActive (false);
+			HPUI.SetActive (false);
 			gameOver.SetActive (true);
 			loseText.SetActive (true);
 			loseText2.SetActive (true);
@@ -386,6 +388,7 @@ public class stateMachine : MonoBehaviour {
 		}
 		if (charDatas [3].currentHp <= 0 && charDatas [4].currentHp <= 0 && charDatas [5].currentHp <= 0) {
 			HPBars.SetActive (false);
+			HPUI.SetActive (false);
 			xPrompt.SetActive (true);
 			winBacker.SetActive (true);
 			winText.SetActive (true);

@@ -4298,7 +4298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed5f5ec751ac3547a6b8f5bcb1516f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayMax: 3
   currentTurn: 0
   turnUpdate: 0
   currentAction: 
@@ -4319,8 +4318,8 @@ MonoBehaviour:
   - {fileID: 810507586}
   winBacker: {fileID: 782787502}
   winText: {fileID: 1214911238}
-  HPBars: {fileID: 1284124596}
   HPUI: {fileID: 352510594}
+  HPBars: {fileID: 1284124596}
   xPrompt: {fileID: 452154771}
   inVictoryScreen: 0
   flawlessText: {fileID: 1436077262}

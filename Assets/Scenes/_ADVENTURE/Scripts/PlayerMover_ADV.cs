@@ -30,6 +30,9 @@ public class PlayerMover_ADV : MonoBehaviour {
 	public Sprite front;
 	public Sprite back;
 
+	public AudioSource SFX;
+	public AudioClip move;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -52,6 +55,9 @@ public class PlayerMover_ADV : MonoBehaviour {
 				newPosition = transform.position -= Vector3.right * 1.7f;
 				transform.position = Vector2.MoveTowards (transform.position, newPosition, moveSpeed);
 				rStickNeutral = false;
+
+				SFX.clip = move;
+				SFX.Play ();
 			
 				this.GetComponent<SpriteRenderer> ().flipX = true;
 			}
@@ -60,18 +66,29 @@ public class PlayerMover_ADV : MonoBehaviour {
 				transform.position = Vector2.MoveTowards (transform.position, newPosition, moveSpeed);
 				rStickNeutral = false;
 
+				SFX.clip = move;
+				SFX.Play ();
+
 				this.GetComponent<SpriteRenderer> ().flipX = false;
 			}
 			if ((Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.UpArrow) || Input.GetAxis ("rJoystickY") > .85f) && rStickNeutral) {
 				newPosition = transform.position += Vector3.up * 1.7f;
 				transform.position = Vector2.MoveTowards (transform.position, newPosition, moveSpeed);
 				rStickNeutral = false;
+
+				SFX.clip = move;
+				SFX.Play ();
+
 				this.GetComponent<SpriteRenderer> ().sprite = back;
 			}
 			if ((Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.DownArrow) || Input.GetAxis ("rJoystickY") < -.85f) && rStickNeutral) {
 				newPosition = transform.position -= Vector3.up * 1.7f;
 				transform.position = Vector2.MoveTowards (transform.position, newPosition, moveSpeed);
 				rStickNeutral = false;
+
+				SFX.clip = move;
+				SFX.Play ();
+
 				this.GetComponent<SpriteRenderer> ().sprite = front;
 
 			}

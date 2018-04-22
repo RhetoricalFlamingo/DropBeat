@@ -20,6 +20,6 @@ public class hpBarFill : MonoBehaviour {
 
 		this.GetComponent<Image> ().fillAmount = quotient;
 
-		Debug.Log (quotient);
+		//Debug.Log (quotient);
 	}
 }

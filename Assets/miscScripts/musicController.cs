@@ -98,7 +98,7 @@ public class musicController : MonoBehaviour {
 		if (toggleChange) {
 			BGM.Play ();
 			toggleChange = false;
-			Debug.Log ("play");
+			//Debug.Log ("play");
 		}
 	}
 }

@@ -38,6 +38,9 @@ public class chatterControl : MonoBehaviour {
 	public GameObject npc2Portrait;
 	public GameObject npc3Portrait;
 
+	public AudioSource SFX;
+	public AudioClip talk;
+
 	bool[] endDialogue = new bool[4];
 
 	public GameObject bBars1;
@@ -67,6 +70,9 @@ public class chatterControl : MonoBehaviour {
 				botText.SetActive (true);
 
 				babotPortrait.SetActive (true);
+
+				SFX.clip = talk;
+				SFX.Play ();
 			}
 
 			if (nearNpc1 && !endDialogue[1]) {
@@ -78,6 +84,9 @@ public class chatterControl : MonoBehaviour {
 				botText2.SetActive (true);
 
 				npc1Portrait.SetActive (true);
+
+				SFX.clip = talk;
+				SFX.Play ();
 			}
 
 			if (nearNpc2 && !endDialogue[2]) {
@@ -89,6 +98,9 @@ public class chatterControl : MonoBehaviour {
 				topText.SetActive (true);
 
 				npc2Portrait.SetActive (true);
+
+				SFX.clip = talk;
+				SFX.Play ();
 			}
 
 			if (nearNpc3 && !endDialogue[3]) {
@@ -100,6 +112,9 @@ public class chatterControl : MonoBehaviour {
 				topText2.SetActive (true);
 
 				npc3Portrait.SetActive (true);
+
+				SFX.clip = talk;
+				SFX.Play ();
 			}
 		}
 

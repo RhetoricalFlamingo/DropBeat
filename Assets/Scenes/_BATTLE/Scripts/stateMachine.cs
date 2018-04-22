@@ -75,7 +75,7 @@ public class stateMachine : MonoBehaviour {
 
 
 	void Start () {
-		transform.position = charPortraits[0].transform.position + new Vector3 (0,3,-1);
+		transform.position = charPortraits[0].transform.position + new Vector3 (4.8f, 4.8f, -4);
 		currentTurn = 1;
 
 		faceButtonRend = faceButtonUI.GetComponent<SpriteRenderer> ();
@@ -197,7 +197,7 @@ public class stateMachine : MonoBehaviour {
 	public void reticulePosition ()	{
 		if (turnChangedThisFrame) {
 
-			transform.position = charPortraits [currentTurn - 1].transform.position + new Vector3 (0,3,-1);
+			transform.position = charPortraits [currentTurn - 1].transform.position + new Vector3 (4.8f, 5, -4);
 
 			/*if (currentTurn == 1) {
 				transform.position = charPortraits[0].transform.position + new Vector3 (0,3,-1);
@@ -378,6 +378,7 @@ public class stateMachine : MonoBehaviour {
 
 	public void endGame ()	{
 		if (charDatas [0].currentHp <= 0 && charDatas [1].currentHp <= 0 && charDatas [2].currentHp <= 0) {
+			this.GetComponent<SpriteRenderer> ().sprite = null;
 			xPrompt.SetActive (true);
 			HPBars.SetActive (false);
 			HPUI.SetActive (false);
@@ -387,6 +388,7 @@ public class stateMachine : MonoBehaviour {
 			BGM.volume -= .075f;
 		}
 		if (charDatas [3].currentHp <= 0 && charDatas [4].currentHp <= 0 && charDatas [5].currentHp <= 0) {
+			this.GetComponent<SpriteRenderer> ().sprite = null;
 			HPBars.SetActive (false);
 			HPUI.SetActive (false);
 			xPrompt.SetActive (true);

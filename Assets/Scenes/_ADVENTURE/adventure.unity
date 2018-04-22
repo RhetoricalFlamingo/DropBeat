@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 52369750}
   - component: {fileID: 52369752}
   m_Layer: 5
-  m_Name: 3_HPcharDatas
+  m_Name: 5_HPcharDatas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1284124597}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 188955992}
   - component: {fileID: 188955994}
   m_Layer: 5
-  m_Name: 0HPBar
+  m_Name: 2HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -786,7 +786,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 352510595}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -838,7 +838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
-  barID: 0
+  barID: 2
 --- !u!1 &207155056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,12 +1391,12 @@ RectTransform:
   - {fileID: 459426024}
   - {fileID: 12908378}
   - {fileID: 1164293613}
-  - {fileID: 188955991}
-  - {fileID: 1227970628}
   - {fileID: 547133668}
-  - {fileID: 515123679}
-  - {fileID: 1060790163}
+  - {fileID: 1227970628}
+  - {fileID: 188955991}
   - {fileID: 1042273406}
+  - {fileID: 1060790163}
+  - {fileID: 515123679}
   m_Father: {fileID: 1595412141}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1438,7 +1438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195, y: 51}
+  m_AnchoredPosition: {x: 195, y: -118}
   m_SizeDelta: {x: 117.3, y: 85.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421552434
@@ -1527,7 +1527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 194, y: -28}
+  m_AnchoredPosition: {x: 194, y: 9}
   m_SizeDelta: {x: 117.3, y: 85.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444537305
@@ -1823,7 +1823,7 @@ GameObject:
   - component: {fileID: 515123680}
   - component: {fileID: 515123682}
   m_Layer: 5
-  m_Name: 3HPBar
+  m_Name: 5HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1840,7 +1840,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 352510595}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1892,7 +1892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
-  barID: 3
+  barID: 5
 --- !u!1 &530048357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,7 +2201,7 @@ GameObject:
   - component: {fileID: 547133669}
   - component: {fileID: 547133671}
   m_Layer: 5
-  m_Name: 2HPBar
+  m_Name: 0HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2218,7 +2218,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 352510595}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2270,7 +2270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
-  barID: 2
+  barID: 0
 --- !u!1 &585965344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2728,7 +2728,7 @@ GameObject:
   - component: {fileID: 702943736}
   - component: {fileID: 702943738}
   m_Layer: 5
-  m_Name: 0_HPcharDatas
+  m_Name: 2_HPcharDatas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2745,7 +2745,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1284124597}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3860,7 +3860,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -188, y: 45}
+  m_AnchoredPosition: {x: -188, y: -140}
   m_SizeDelta: {x: 117.3, y: 85.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041892773
@@ -3928,7 +3928,7 @@ GameObject:
   - component: {fileID: 1042273407}
   - component: {fileID: 1042273409}
   m_Layer: 5
-  m_Name: 5HPBar
+  m_Name: 3HPBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3945,7 +3945,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 352510595}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3997,7 +3997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reticuleStateMachine: {fileID: 1104275899}
-  barID: 5
+  barID: 3
 --- !u!1 &1060790162
 GameObject:
   m_ObjectHideFlags: 0
@@ -4282,7 +4282,7 @@ Transform:
   m_GameObject: {fileID: 1104275899}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
   m_LocalPosition: {x: 36.483276, y: 4.966994, z: -9.005}
-  m_LocalScale: {x: 0.37013876, y: 0.29869172, z: 1}
+  m_LocalScale: {x: 0.32202074, y: 0.25986183, z: 0.87000006}
   m_Children: []
   m_Father: {fileID: 2037369892}
   m_RootOrder: 5
@@ -5073,12 +5073,12 @@ Transform:
   m_LocalPosition: {x: -2.5526733, y: -2.5526886, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 702943735}
-  - {fileID: 222712911}
   - {fileID: 1565523868}
-  - {fileID: 52369749}
-  - {fileID: 302432337}
+  - {fileID: 222712911}
+  - {fileID: 702943735}
   - {fileID: 1590804758}
+  - {fileID: 302432337}
+  - {fileID: 52369749}
   - {fileID: 1041892772}
   - {fileID: 2027430811}
   - {fileID: 1975401991}
@@ -5700,7 +5700,7 @@ GameObject:
   - component: {fileID: 1565523869}
   - component: {fileID: 1565523871}
   m_Layer: 5
-  m_Name: 2_HPcharDatas
+  m_Name: 0_HPcharDatas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5717,7 +5717,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1284124597}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5918,7 +5918,7 @@ GameObject:
   - component: {fileID: 1590804759}
   - component: {fileID: 1590804761}
   m_Layer: 5
-  m_Name: 5_HPcharDatas
+  m_Name: 3_HPcharDatas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5935,7 +5935,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1284124597}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6266,7 +6266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195, y: -104}
+  m_AnchoredPosition: {x: 195, y: 161}
   m_SizeDelta: {x: 117.3, y: 85.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1651372229
@@ -6872,7 +6872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -187.99997, y: -104}
+  m_AnchoredPosition: {x: -187.99997, y: 154}
   m_SizeDelta: {x: 117.3, y: 85.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1975401992
@@ -6961,7 +6961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -20}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -187.99997, y: -29}
+  m_AnchoredPosition: {x: -187.99997, y: 16.69508}
   m_SizeDelta: {x: 117.3, y: 85.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2027430812
